@@ -1,0 +1,147 @@
+/* Skills Section (004) */
+.skills-section {
+  position: relative;
+  padding: clamp(80px, 12vh, 160px) 0 clamp(80px, 12vh, 140px);
+  background-color: var(--color-paper);
+  border-top: 1px solid var(--color-ink-15);
+  overflow: hidden;
+}
+
+.skills-header-container {
+  padding: 0 clamp(24px, 4.5vw, 64px);
+  margin-bottom: clamp(40px, 6vh, 72px);
+}
+
+.skills-headline {
+  font-family: var(--font-headline);
+  font-size: clamp(2.25rem, 5.5vw, 4.75rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  color: var(--color-ink);
+}
+
+/* Velocity Marquee Container */
+.marquee-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 2vh, 24px);
+  margin-bottom: clamp(64px, 10vh, 120px);
+  overflow: hidden;
+  user-select: none;
+}
+
+.marquee-row {
+  display: flex;
+  width: max-content;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+.marquee-content {
+  display: flex;
+  align-items: center;
+  gap: clamp(24px, 4vw, 48px);
+  padding-right: clamp(24px, 4vw, 48px);
+}
+
+.marquee-item {
+  font-family: var(--font-headline);
+  font-size: clamp(2rem, 5.5vw, 4.5rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(20px, 3.5vw, 40px);
+  transition: color 0.2s ease;
+}
+
+.marquee-item:hover {
+  color: var(--color-signal);
+}
+
+.marquee-sep {
+  color: var(--color-signal);
+  font-weight: 900;
+  font-size: 0.85em;
+}
+
+/* Row 2 Outline / Inverted Style */
+.marquee-row--reverse .marquee-item {
+  -webkit-text-stroke: 1.5px var(--color-ink);
+  color: transparent;
+}
+
+.marquee-row--reverse .marquee-item:hover {
+  color: var(--color-ink);
+}
+
+/* How I Work Philosophy Block */
+.philosophy-container {
+  padding: 0 clamp(24px, 4.5vw, 64px);
+}
+
+.philosophy-title {
+  font-family: var(--font-title);
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--color-ink);
+  margin-bottom: 32px;
+  border-bottom: 2px solid var(--color-ink);
+  padding-bottom: 12px;
+}
+
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.philosophy-card {
+  border-top: 1px solid var(--color-ink-20);
+  padding-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform 0.3s var(--ease-out-expo);
+}
+
+.philosophy-card:hover {
+  transform: translateY(-4px);
+}
+
+.philosophy-num {
+  font-family: var(--font-numeral);
+  font-size: 2rem;
+  line-height: 0.9;
+  color: var(--color-signal);
+}
+
+.philosophy-step-title {
+  font-family: var(--font-title);
+  font-size: 1.0625rem;
+  font-weight: 800;
+  color: var(--color-ink);
+}
+
+.philosophy-step-text {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--color-ink-80);
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .philosophy-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .philosophy-grid {
+    grid-template-columns: 1fr;
+  }
+}

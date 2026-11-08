@@ -1,0 +1,173 @@
+/* About Section (001) */
+.about-section {
+  position: relative;
+  padding: clamp(80px, 12vh, 160px) clamp(24px, 4.5vw, 64px);
+  background-color: var(--color-paper);
+  border-top: 1px solid var(--color-ink-15);
+  overflow: hidden;
+}
+
+.section-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid var(--color-ink-15);
+  padding-bottom: 16px;
+  margin-bottom: clamp(32px, 5vh, 64px);
+}
+
+.section-index {
+  font-family: var(--font-numeral);
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  color: var(--color-signal);
+  letter-spacing: 0.05em;
+}
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-ink-60);
+}
+
+.about-headline {
+  font-family: var(--font-headline);
+  font-size: clamp(2.25rem, 5.5vw, 4.75rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  color: var(--color-ink);
+  max-width: 1200px;
+  margin-bottom: clamp(48px, 8vh, 96px);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: clamp(32px, 6vw, 80px);
+  align-items: start;
+}
+
+.about-bio {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.about-bio-lead {
+  font-family: var(--font-title);
+  font-size: clamp(1.125rem, 1.6vw, 1.5rem);
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--color-ink);
+}
+
+.about-bio-p {
+  font-family: var(--font-mono);
+  font-size: clamp(0.8125rem, 0.95vw, 0.9375rem);
+  line-height: 1.75;
+  color: var(--color-ink-80);
+}
+
+/* Fact Sheet Table */
+.about-facts {
+  border-top: 2px solid var(--color-ink);
+}
+
+.fact-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--color-ink-15);
+  align-items: baseline;
+  gap: 16px;
+}
+
+.fact-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-ink-60);
+}
+
+.fact-value {
+  font-family: var(--font-title);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--color-ink);
+  line-height: 1.4;
+}
+
+.target-roles-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.role-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.04em;
+  background-color: var(--color-ink-05);
+  border: 1px solid var(--color-ink-20);
+  padding: 4px 10px;
+  color: var(--color-ink);
+}
+
+/* Three Pillars Highlight */
+.about-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: clamp(48px, 8vh, 80px);
+  padding-top: clamp(32px, 5vh, 48px);
+  border-top: 1px solid var(--color-ink-15);
+}
+
+.pillar-card {
+  padding: 24px;
+  background-color: var(--color-paper);
+  border: 1px solid var(--color-ink-15);
+  transition: transform 0.3s var(--ease-out-expo), border-color 0.2s ease;
+}
+
+.pillar-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-ink);
+}
+
+.pillar-num {
+  font-family: var(--font-numeral);
+  font-size: 1.5rem;
+  color: var(--color-signal);
+  margin-bottom: 8px;
+}
+
+.pillar-title {
+  font-family: var(--font-title);
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: var(--color-ink);
+  margin-bottom: 8px;
+}
+
+.pillar-text {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--color-ink-80);
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .about-pillars {
+    grid-template-columns: 1fr;
+  }
+}

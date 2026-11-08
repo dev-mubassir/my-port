@@ -3,10 +3,991 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mubassir Shah — AI Product Builder & Engineer</title>
+  <title>Mubassir Shah — AI Product Builder & Software Engineer</title>
+  <meta name="description" content="Personal portfolio of Mubassir Shah. B.Sc. CS student and indie SaaS builder based in Lakhnadon, India. Creator of Siffty (Meta App Review approved AI DM intelligence SaaS). Open to AI Product, AI/ML, and Generative AI roles.">
+  <meta name="keywords" content="Mubassir Shah, AI Product Builder, Machine Learning Engineer, Siffty, Python, FastAPI, Next.js, Cloudflare Workers AI, Gemini, Generative AI, Portfolio 2026">
+  <meta name="author" content="Mubassir Shah">
+  
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dev-mubassir.github.io/my-port/">
+  <meta property="og:title" content="Mubassir Shah — AI Product Builder & Engineer">
+  <meta property="og:description" content="AI/ML student and indie SaaS builder. Creator of Siffty. Open to AI Product, AI/ML, and Agentic AI roles 2026.">
+  <meta property="og:image" content="assets/mubassir-cutout.webp">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:title" content="Mubassir Shah — AI Product Builder & Engineer">
+  <meta property="twitter:description" content="AI/ML student and indie SaaS builder. Creator of Siffty. Open to AI Product and AI/ML roles 2026.">
+  <meta property="twitter:image" content="assets/mubassir-cutout.webp">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <!-- Free Google Fonts (latin subset, display=swap) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wdth,wght@100..125,800..900&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+  <!-- Component Stylesheets -->
+  <link rel="stylesheet" href="src/styles/tokens.css">
+  <link rel="stylesheet" href="src/styles/base.css">
+  <link rel="stylesheet" href="src/styles/loader.css">
+  <link rel="stylesheet" href="src/styles/nav.css">
+  <link rel="stylesheet" href="src/styles/hero.css">
+  <link rel="stylesheet" href="src/styles/glitch.css">
+  <link rel="stylesheet" href="src/styles/rotator.css">
+  <link rel="stylesheet" href="src/styles/cursor.css">
+  <link rel="stylesheet" href="src/styles/menu.css">
+  <link rel="stylesheet" href="src/styles/about.css">
+  <link rel="stylesheet" href="src/styles/siffty.css">
+  <link rel="stylesheet" href="src/styles/projects.css">
+  <link rel="stylesheet" href="src/styles/skills.css">
+  <link rel="stylesheet" href="src/styles/timeline.css">
+  <link rel="stylesheet" href="src/styles/contact.css">
 </head>
 <body>
-  <div id="app"></div>
-  <script type="module" src="/src/main.js"></script>
+
+  <!-- Top Scroll Progress Bar -->
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Thin Viewport Boundary Frame matching reference -->
+  <div class="viewport-frame" aria-hidden="true"></div>
+
+  <!-- Fullscreen Animated Preloader -->
+  <aside id="preloader" aria-label="Loading portfolio">
+    <div class="loader-top">
+      <span class="loader-logo">+MS</span>
+      <span class="loader-status">INITIALIZING SYSTEM / 2026</span>
+    </div>
+    <div class="loader-center">
+      <div class="loader-counter">000</div>
+      <div class="loader-word">mubassir<span class="dot">.</span></div>
+    </div>
+    <div class="loader-bottom">
+      <span class="loader-micro">AI PRODUCT BUILDER / LAKHNADON, IN</span>
+      <span class="loader-micro">DEV-MUBASSIR</span>
+    </div>
+  </aside>
+
+  <!-- Dual Shutter Curtain Wipe Layer -->
+  <div class="curtain-wipe" aria-hidden="true"></div>
+
+  <!-- Full-Screen Black Menu Overlay -->
+  <div id="menu-overlay" aria-hidden="true" role="dialog" aria-label="Main navigation menu">
+    <div class="menu-header">
+      <a href="#hero" class="menu-logo" aria-label="Go to hero section">
+        <span class="logo-plus">+</span>MS
+      </a>
+      <button class="btn-menu-close" aria-label="Close navigation menu">
+        <span>CLOSE</span>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <line x1="1" y1="1" x2="13" y2="13"></line>
+          <line x1="13" y1="1" x2="1" y2="13"></line>
+        </svg>
+      </button>
+    </div>
+
+    <nav class="menu-nav">
+      <a href="#about" class="menu-nav-link" data-magnetic>
+        <span class="menu-nav-num">001</span>
+        <span>ABOUT</span>
+      </a>
+      <a href="#siffty" class="menu-nav-link" data-magnetic>
+        <span class="menu-nav-num">002</span>
+        <span>SIFFTY CASE STUDY</span>
+      </a>
+      <a href="#projects" class="menu-nav-link" data-magnetic>
+        <span class="menu-nav-num">003</span>
+        <span>PROJECTS</span>
+      </a>
+      <a href="#skills" class="menu-nav-link" data-magnetic>
+        <span class="menu-nav-num">004</span>
+        <span>SKILLS</span>
+      </a>
+      <a href="#timeline" class="menu-nav-link" data-magnetic>
+        <span class="menu-nav-num">005</span>
+        <span>TIMELINE</span>
+      </a>
+      <a href="#contact" class="menu-nav-link" data-magnetic>
+        <span class="menu-nav-num">006</span>
+        <span>CONTACT</span>
+      </a>
+    </nav>
+
+    <div class="menu-footer">
+      <div class="menu-meta-col">
+        <span class="micro-text micro-text--muted">LOCATION</span>
+        <span class="micro-text">LAKHNADON, MADHYA PRADESH, INDIA</span>
+      </div>
+      <div class="menu-social-links">
+        <a href="https://github.com/dev-mubassir" target="_blank" rel="noopener noreferrer">GITHUB</a>
+        <a href="https://linkedin.com/in/mubassir-shah" target="_blank" rel="noopener noreferrer">LINKEDIN</a>
+        <a href="https://instagram.com/mubassir.shah_" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
+        <a href="assets/Mubassir_Shah_Resume.pdf" target="_blank" rel="noopener noreferrer">RESUME</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Site Header & Top Navigation -->
+  <header class="site-header">
+    <div class="nav-container">
+      <div class="nav-left">
+        <a href="#hero" class="logo-mark" aria-label="Mubassir Shah Logo" data-magnetic>
+          <span class="logo-plus">+</span>MS
+        </a>
+        <a href="#projects" class="nav-link" data-scramble data-magnetic>PROJECTS</a>
+      </div>
+
+      <div class="nav-right">
+        <a href="#about" class="nav-link" data-scramble data-magnetic>ABOUT</a>
+        <a href="#skills" class="nav-link" data-scramble data-magnetic>SKILLS</a>
+
+        <div class="nav-dropdown-wrapper">
+          <button class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false" data-magnetic>
+            <span>CONTACT</span>
+            <span class="dropdown-arrow" aria-hidden="true"></span>
+          </button>
+          <div class="nav-dropdown-menu" role="menu">
+            <a href="https://github.com/dev-mubassir" target="_blank" rel="noopener noreferrer" class="dropdown-item" role="menuitem">GITHUB</a>
+            <a href="https://linkedin.com/in/mubassir-shah" target="_blank" rel="noopener noreferrer" class="dropdown-item" role="menuitem">LINKEDIN</a>
+            <a href="https://instagram.com/mubassir.shah_" target="_blank" rel="noopener noreferrer" class="dropdown-item" role="menuitem">INSTAGRAM</a>
+            <a href="mailto:mubassirrr2005@gmail.com" class="dropdown-item" role="menuitem">EMAIL</a>
+          </div>
+        </div>
+
+        <button class="btn-menu-dots" aria-label="Open full-screen menu overlay" data-magnetic>
+          <span class="dot-pill"></span>
+          <span class="dot-pill"></span>
+          <span class="dot-pill"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- 1. HERO SECTION (001) Matching Reference Design Closely -->
+    <section id="hero" class="hero-section" aria-label="Hero Introduction">
+      
+      <!-- Top Micro-Text Columns above Headline -->
+      <div class="hero-micro-row">
+        <div class="hero-micro-col">
+          <p class="micro-title">AI PRODUCT BUILDER</p>
+          <p class="micro-desc">PYTHON · FASTAPI · NEXT.JS · MULTI-LLM ARCHITECTURE</p>
+        </div>
+        <div class="hero-micro-col">
+          <p class="micro-title">BASED IN LAKHNADON, MP, INDIA</p>
+          <p class="micro-desc">OPEN TO AI PRODUCT & AI-ML ROLES 2026</p>
+        </div>
+      </div>
+
+      <!-- Main Left Hero Content -->
+      <div class="hero-content">
+        <h1 class="hero-headline">
+          mubassir<span class="dot">.</span>
+        </h1>
+
+        <!-- Headline Tagline with 3D Vertical Rotating Word -->
+        <p class="hero-tagline">
+          <span>I build AI that</span>
+          <span class="rotator-container" data-words='["ships", "scales", "sells", "works"]'>
+            <span class="rotator-word-box">
+              <span class="rotator-word is-active">ships</span>
+            </span>
+          </span>
+        </p>
+      </div>
+
+      <!-- Horizontal Signal Orange Band Crossing Viewport -->
+      <div class="hero-orange-band" aria-hidden="true">
+        <!-- Orange Tint Overlap Duplicate Layer (mix-blend-mode multiply) -->
+        <div class="hero-band-tint">
+          <img 
+            src="assets/mubassir-cutout.webp" 
+            alt="" 
+            class="hero-band-photo-clone" 
+            loading="eager" 
+            decoding="async" 
+            aria-hidden="true"
+          >
+        </div>
+      </div>
+
+      <!-- Black Square Button with Downward Arrow at Bottom-Left of Orange Band -->
+      <button class="hero-band-btn" aria-label="Scroll down to About section" data-magnetic>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </button>
+
+      <!-- Cutout Portrait with Glitch Layers -->
+      <div class="hero-photo-wrapper" id="hero-portrait">
+        <div class="glitch-wrapper">
+          <img 
+            src="assets/mubassir-cutout.webp" 
+            alt="Mubassir Shah — AI Product Builder & Indie SaaS Engineer" 
+            class="hero-photo-img" 
+            loading="eager" 
+            decoding="async"
+            width="1024"
+            height="1024"
+          >
+          <!-- Ink Glitch Slice -->
+          <div class="glitch-slice glitch-slice--ink" aria-hidden="true"></div>
+          <!-- Signal Orange Glitch Slice -->
+          <div class="glitch-slice glitch-slice--signal" aria-hidden="true"></div>
+          <!-- Grayscale Scanlines -->
+          <div class="glitch-scanlines" aria-hidden="true"></div>
+        </div>
+      </div>
+
+      <!-- Rotated Bordered Vertical Meta on Right -->
+      <div class="hero-vertical-meta" aria-hidden="true">
+        <span>MUBASSIR SHAH — AI PRODUCT BUILDER — PORTFOLIO 2026</span>
+      </div>
+
+      <!-- Bottom Layout Elements: Big Rotated 001 & Circular Badge -->
+      <div class="hero-bottom-row">
+        <div class="hero-index-001" aria-hidden="true">001</div>
+
+        <!-- Rotating Circular Text Badge -->
+        <div class="hero-badge-wrapper" aria-label="Available for work 2026 badge">
+          <svg class="badge-svg" viewBox="0 0 100 100" aria-hidden="true">
+            <defs>
+              <path id="badge-circle-path" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" />
+            </defs>
+            <text class="badge-text">
+              <textPath xlink:href="#badge-circle-path" startOffset="0%">
+                AVAILABLE FOR WORK • AI / ML • 2026 •
+              </textPath>
+            </text>
+          </svg>
+          <div class="badge-center-dot" aria-hidden="true"></div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- 2. ABOUT SECTION (001) -->
+    <section id="about" class="about-section" aria-label="About Mubassir Shah">
+      <div class="section-header-row">
+        <span class="section-index">001</span>
+        <span class="section-label">PROFILE & BACKGROUND</span>
+      </div>
+
+      <h2 class="about-headline">
+        <span>Student by degree, builder by</span>
+        <span class="rotator-container" data-words='["habit", "choice", "night", "design"]'>
+          <span class="rotator-word-box">
+            <span class="rotator-word is-active">habit</span>
+          </span>
+        </span>
+      </h2>
+
+      <div class="about-grid">
+        <div class="about-bio">
+          <p class="about-bio-lead">
+            I build practical AI software from Lakhnadon, Madhya Pradesh. I focus on Python, Deep Learning, and end-to-end SaaS architecture.
+          </p>
+          <p class="about-bio-p">
+            I study Computer Science at Govt. Swami Vivekanand College (2023–2026) while shipping production products independently. I do not stop at local Jupyter notebooks or conceptual prototypes. I engineer full-stack systems with Python, FastAPI/Flask, Node.js backends, resilient multi-LLM failover pipelines, and clean database isolation.
+          </p>
+          <p class="about-bio-p">
+            I learn by shipping real code to real users. When launch day comes, I craft motion design and launch videos using state-of-the-art AI video tools.
+          </p>
+        </div>
+
+        <div class="about-facts">
+          <div class="fact-row">
+            <span class="fact-label">DEGREE</span>
+            <span class="fact-value">B.Sc. Computer Science (2023–2026)</span>
+          </div>
+          <div class="fact-row">
+            <span class="fact-label">INSTITUTION</span>
+            <span class="fact-value">Govt. Swami Vivekanand College, Lakhnadon</span>
+          </div>
+          <div class="fact-row">
+            <span class="fact-label">ACADEMIC</span>
+            <span class="fact-value">CGPA 6.8</span>
+          </div>
+          <div class="fact-row">
+            <span class="fact-label">LOCATION</span>
+            <span class="fact-value">Lakhnadon, Seoni, Madhya Pradesh, India</span>
+          </div>
+          <div class="fact-row">
+            <span class="fact-label">CORE FOCUS</span>
+            <span class="fact-value">Python, Deep Learning, Generative & Agentic AI</span>
+          </div>
+          <div class="fact-row">
+            <span class="fact-label">TARGET ROLES</span>
+            <div class="target-roles-list">
+              <span class="role-tag">AI Product</span>
+              <span class="role-tag">AI / ML Engineer</span>
+              <span class="role-tag">Generative AI</span>
+              <span class="role-tag">Agentic AI</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-pillars">
+        <div class="pillar-card">
+          <div class="pillar-num">01</div>
+          <h3 class="pillar-title">Autonomous Builder</h3>
+          <p class="pillar-text">I manage product lifecycles independently: frontend, backend, AI orchestration, automated test suites, and Meta App Review approvals.</p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-num">02</div>
+          <h3 class="pillar-title">Production AI Routing</h3>
+          <p class="pillar-text">I deploy Cloudflare Workers AI for edge triage and maintain multi-provider failover chains across Gemini, OpenAI, and xAI.</p>
+        </div>
+        <div class="pillar-card">
+          <div class="pillar-num">03</div>
+          <h3 class="pillar-title">Rigorous Testing</h3>
+          <p class="pillar-text">All systems are backed by automated tests for auto-reply loops, model failover recovery, chat deletion, and data isolation.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. FLAGSHIP CASE STUDY: SIFFTY (002) -->
+    <section id="siffty" class="siffty-section" aria-label="Siffty Flagship Case Study">
+      <div class="section-header-row">
+        <span class="section-index">002</span>
+        <span class="section-label">FLAGSHIP CASE STUDY / AI SAAS</span>
+      </div>
+
+      <div class="siffty-hero-row">
+        <div class="siffty-title-group">
+          <span class="siffty-badge">META APP REVIEW APPROVED · SEPT 2026</span>
+          <h2 class="siffty-headline">siffty<span class="dot">.</span></h2>
+          <p class="about-bio-lead" style="color: var(--color-paper-80); margin-top: 16px;">
+            AI Instagram DM intelligence SaaS for Indian creators and businesses. Finds brand sponsorship deals, qualifies high-intent leads, and automates sales and support triage.
+          </p>
+        </div>
+
+        <div class="siffty-actions">
+          <a href="https://siffty.com" target="_blank" rel="noopener noreferrer" class="btn-primary" data-magnetic>
+            <span>VISIT SIFFTY.COM</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </a>
+          <a href="https://instagram.com/siffty.dev" target="_blank" rel="noopener noreferrer" class="btn-secondary" data-magnetic>
+            <span>@SIFFTY.DEV</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Real Metrics Grid -->
+      <div class="siffty-metrics">
+        <div class="metric-card">
+          <span class="metric-num">99.6%</span>
+          <span class="metric-label">Primary Model Serving</span>
+          <span class="metric-sub">Served by Cloudflare Workers AI edge model across last 500 calls</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-num">~430ms</span>
+          <span class="metric-label">Median Latency</span>
+          <span class="metric-sub">Real-time classification and response latency for creator DMs</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-num">>90%</span>
+          <span class="metric-label">Token Cost Reduction</span>
+          <span class="metric-sub">Lower Gemini token usage by routing primary tasks to edge workers</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-num">700k+</span>
+          <span class="metric-label">Creator Reach</span>
+          <span class="metric-sub">In early access use by Indian creators, including one with 700k followers</span>
+        </div>
+      </div>
+
+      <!-- Animated SVG Architecture Flow Diagram -->
+      <div class="siffty-diagram-wrapper">
+        <div class="diagram-header">
+          <span class="diagram-title">Production Multi-Provider AI Architecture</span>
+          <span class="diagram-legend">REAL-TIME FAILOVER & INFERENCE PIPELINE</span>
+        </div>
+
+        <svg class="architecture-svg" viewBox="0 0 1080 290" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Siffty Architecture Diagram">
+          <!-- Connectors -->
+          <!-- Client to API -->
+          <path d="M 180 145 L 260 145" class="arch-connector" />
+          <path d="M 180 145 L 260 145" class="arch-connector--signal" />
+          
+          <!-- API to Router -->
+          <path d="M 430 145 L 500 145" class="arch-connector" />
+          <path d="M 430 145 L 500 145" class="arch-connector--signal" />
+          
+          <!-- Router to Primary (CF Workers AI) -->
+          <path d="M 670 145 C 720 145, 710 65, 760 65" class="arch-connector" />
+          <path d="M 670 145 C 720 145, 710 65, 760 65" class="arch-connector--signal" />
+          
+          <!-- Router to Fallback (Gemini/OpenAI) -->
+          <path d="M 670 145 C 720 145, 710 225, 760 225" class="arch-connector" />
+          <path d="M 670 145 C 720 145, 710 225, 760 225" class="arch-connector--signal" />
+
+          <!-- Convergence to Database -->
+          <path d="M 970 65 C 990 65, 990 145, 1000 145" class="arch-connector" />
+          <path d="M 970 225 C 990 225, 990 145, 1000 145" class="arch-connector" />
+
+          <!-- Node 1: Client / Webhook -->
+          <g>
+            <rect x="10" y="110" width="170" height="70" class="arch-node" rx="0" />
+            <text x="25" y="140" class="arch-node-title">INSTAGRAM DM</text>
+            <text x="25" y="160" class="arch-node-desc">Meta Webhook Ingestion</text>
+            <circle cx="170" cy="145" r="4" class="pulse-dot" />
+          </g>
+
+          <!-- Node 2: Node / Express API -->
+          <g>
+            <rect x="260" y="110" width="170" height="70" class="arch-node" rx="0" />
+            <text x="275" y="140" class="arch-node-title">EXPRESS API</text>
+            <text x="275" y="160" class="arch-node-desc">Auth & Queue Ingestion</text>
+            <circle cx="420" cy="145" r="4" class="pulse-dot" />
+          </g>
+
+          <!-- Node 3: AI Router -->
+          <g>
+            <rect x="500" y="110" width="170" height="70" class="arch-node arch-node--active" rx="0" />
+            <text x="515" y="140" class="arch-node-title">AI ROUTER</text>
+            <text x="515" y="160" class="arch-node-desc">Plan-Based Routing</text>
+          </g>
+
+          <!-- Node 4: Primary Workers AI -->
+          <g>
+            <rect x="760" y="30" width="210" height="70" class="arch-node arch-node--active" rx="0" />
+            <text x="775" y="60" class="arch-node-title">PRIMARY: WORKERS AI</text>
+            <text x="775" y="80" class="arch-node-desc">Edge Classification (430ms)</text>
+            <circle cx="960" cy="65" r="4" class="pulse-dot" />
+          </g>
+
+          <!-- Node 5: Fallback Multi-LLM -->
+          <g>
+            <rect x="760" y="190" width="210" height="70" class="arch-node" rx="0" />
+            <text x="775" y="220" class="arch-node-title">FALLBACK: GEMINI / XAI</text>
+            <text x="775" y="240" class="arch-node-desc">Multi-Provider Failover</text>
+          </g>
+
+          <!-- Node 6: Database -->
+          <g>
+            <rect x="1000" y="110" width="70" height="70" class="arch-node" rx="0" />
+            <text x="1010" y="140" class="arch-node-title">DB</text>
+            <text x="1010" y="160" class="arch-node-desc">Prisma</text>
+          </g>
+        </svg>
+      </div>
+
+      <!-- Stack & Automated Testing -->
+      <div class="siffty-details-grid">
+        <div class="siffty-card">
+          <h3 class="siffty-card-title">Production Tech Stack</h3>
+          <div class="tech-tags-wrapper">
+            <span class="tech-pill">Next.js</span>
+            <span class="tech-pill">React</span>
+            <span class="tech-pill">Node.js</span>
+            <span class="tech-pill">Express</span>
+            <span class="tech-pill">Socket.io Real-Time</span>
+            <span class="tech-pill">Prisma ORM</span>
+            <span class="tech-pill">PostgreSQL</span>
+            <span class="tech-pill">Cloudflare Workers AI</span>
+            <span class="tech-pill">Google Gemini</span>
+            <span class="tech-pill">OpenAI</span>
+            <span class="tech-pill">xAI</span>
+          </div>
+        </div>
+
+        <div class="siffty-card">
+          <h3 class="siffty-card-title">Passing Automated Test Suites</h3>
+          <ul class="test-suite-list">
+            <li class="test-item">
+              <span class="test-status-pill">PASSED</span>
+              <span>General SaaS Core Architecture & Tenant Isolation</span>
+            </li>
+            <li class="test-item">
+              <span class="test-status-pill">PASSED</span>
+              <span>Automated Instagram DM Auto-Reply Execution Loops</span>
+            </li>
+            <li class="test-item">
+              <span class="test-status-pill">PASSED</span>
+              <span>Multi-Provider AI Automatic Failover & Recovery</span>
+            </li>
+            <li class="test-item">
+              <span class="test-status-pill">PASSED</span>
+              <span>Thread Deletion & GDPR Privacy Compliance</span>
+            </li>
+            <li class="test-item">
+              <span class="test-status-pill">PASSED</span>
+              <span>Cross-Creator Data Isolation & Permission Boundaries</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. PROJECTS GRID SECTION (003) -->
+    <section id="projects" class="projects-section" aria-label="Projects Showcase">
+      <div class="section-header-row">
+        <span class="section-index">003</span>
+        <span class="section-label">SELECTED WORKS</span>
+      </div>
+
+      <h2 class="projects-headline">
+        <span>Things I have</span>
+        <span class="rotator-container" data-words='["built", "shipped", "tested", "broken"]'>
+          <span class="rotator-word-box">
+            <span class="rotator-word is-active">built</span>
+          </span>
+        </span>
+      </h2>
+
+      <div class="projects-grid">
+        <!-- Project 1: Siffty -->
+        <article class="project-card" data-magnetic>
+          <div class="project-card-wipe"></div>
+          <div class="project-card-content">
+            <div class="project-card-top">
+              <span class="project-card-num">01</span>
+              <span class="project-card-category">AI SAAS / INDIE PRODUCT</span>
+            </div>
+
+            <!-- Typographic Abstract Graphic Slot (screenshot drop slot) -->
+            <div class="project-visual-slot">
+              <div class="visual-slot-pattern" aria-hidden="true">
+                <svg viewBox="0 0 200 80">
+                  <line x1="10" y1="20" x2="190" y2="20" stroke="#0A0A0A" stroke-width="2"/>
+                  <line x1="10" y1="40" x2="150" y2="40" stroke="#FF4B2B" stroke-width="3"/>
+                  <line x1="10" y1="60" x2="180" y2="60" stroke="#0A0A0A" stroke-width="1.5" stroke-dasharray="4 4"/>
+                  <rect x="160" y="32" width="16" height="16" fill="#0A0A0A"/>
+                </svg>
+              </div>
+            </div>
+
+            <h3 class="project-card-title">Siffty</h3>
+            <p class="project-card-desc">
+              Meta-approved AI Instagram DM intelligence platform. Automatically identifies brand sponsorship opportunities, qualifies leads, and automates creator support triage.
+            </p>
+
+            <div class="project-card-tech">
+              <span class="tech-tag">Next.js</span>
+              <span class="tech-tag">Node.js</span>
+              <span class="tech-tag">Workers AI</span>
+              <span class="tech-tag">Gemini</span>
+              <span class="tech-tag">Prisma</span>
+            </div>
+
+            <div class="project-card-bottom">
+              <span class="project-status">LIVE IN EARLY ACCESS</span>
+              <div class="project-arrow-btn" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2: DealRadar -->
+        <article class="project-card" data-magnetic>
+          <div class="project-card-wipe"></div>
+          <div class="project-card-content">
+            <div class="project-card-top">
+              <span class="project-card-num">02</span>
+              <span class="project-card-category">AI UTILITY / SCANNER</span>
+            </div>
+
+            <div class="project-visual-slot">
+              <div class="visual-slot-pattern" aria-hidden="true">
+                <svg viewBox="0 0 200 80">
+                  <circle cx="100" cy="40" r="30" stroke="#0A0A0A" stroke-width="1.5" fill="none"/>
+                  <circle cx="100" cy="40" r="16" stroke="#FF4B2B" stroke-width="2" fill="none"/>
+                  <line x1="100" y1="10" x2="100" y2="70" stroke="#0A0A0A" stroke-width="1"/>
+                  <line x1="70" y1="40" x2="130" y2="40" stroke="#0A0A0A" stroke-width="1"/>
+                </svg>
+              </div>
+            </div>
+
+            <h3 class="project-card-title">DealRadar</h3>
+            <p class="project-card-desc">
+              AI email and DM sponsorship detector built with Python and FastAPI. Scans messages for brand inquiries, parses deliverables, and surfaces estimated deal values.
+            </p>
+
+            <div class="project-card-tech">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">FastAPI</span>
+              <span class="tech-tag">OpenAI</span>
+              <span class="tech-tag">Regex</span>
+            </div>
+
+            <div class="project-card-bottom">
+              <span class="project-status">SIFFTY PRECURSOR PROTOTYPE</span>
+              <div class="project-arrow-btn" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3: CityKirana -->
+        <article class="project-card" data-magnetic>
+          <div class="project-card-wipe"></div>
+          <div class="project-card-content">
+            <div class="project-card-top">
+              <span class="project-card-num">03</span>
+              <span class="project-card-category">WEB COMMERCE</span>
+            </div>
+
+            <div class="project-visual-slot">
+              <div class="visual-slot-pattern" aria-hidden="true">
+                <svg viewBox="0 0 200 80">
+                  <rect x="30" y="25" width="40" height="30" stroke="#0A0A0A" stroke-width="2" fill="none"/>
+                  <rect x="80" y="25" width="40" height="30" stroke="#FF4B2B" stroke-width="2" fill="none"/>
+                  <rect x="130" y="25" width="40" height="30" stroke="#0A0A0A" stroke-width="2" fill="none"/>
+                  <line x1="20" y1="65" x2="180" y2="65" stroke="#0A0A0A" stroke-width="2"/>
+                </svg>
+              </div>
+            </div>
+
+            <h3 class="project-card-title">CityKirana</h3>
+            <p class="project-card-desc">
+              Lightweight, zero-framework eCommerce web application engineered for local grocery delivery in Lakhnadon. Built purely in vanilla JavaScript for instant loading on 3G connections.
+            </p>
+
+            <div class="project-card-tech">
+              <span class="tech-tag">Vanilla JS</span>
+              <span class="tech-tag">HTML5</span>
+              <span class="tech-tag">CSS3</span>
+              <span class="tech-tag">Local Storage</span>
+            </div>
+
+            <div class="project-card-bottom">
+              <span class="project-status">DEPLOYED LOCALLY</span>
+              <div class="project-arrow-btn" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 4: Sky Jump -->
+        <article class="project-card" data-magnetic>
+          <div class="project-card-wipe"></div>
+          <div class="project-card-content">
+            <div class="project-card-top">
+              <span class="project-card-num">04</span>
+              <span class="project-card-category">GAME DEVELOPMENT</span>
+            </div>
+
+            <div class="project-visual-slot">
+              <div class="visual-slot-pattern" aria-hidden="true">
+                <svg viewBox="0 0 200 80">
+                  <circle cx="60" cy="50" r="10" fill="#FF4B2B"/>
+                  <line x1="40" y1="65" x2="80" y2="65" stroke="#0A0A0A" stroke-width="3"/>
+                  <line x1="90" y1="45" x2="130" y2="45" stroke="#0A0A0A" stroke-width="3"/>
+                  <line x1="140" y1="25" x2="180" y2="25" stroke="#0A0A0A" stroke-width="3"/>
+                </svg>
+              </div>
+            </div>
+
+            <h3 class="project-card-title">Sky Jump</h3>
+            <p class="project-card-desc">
+              Physics-based HTML5 canvas arcade game. Features 60fps velocity physics, procedural platform generation, collision detection, and high-score state tracking without external engines.
+            </p>
+
+            <div class="project-card-tech">
+              <span class="tech-tag">HTML5 Canvas</span>
+              <span class="tech-tag">JavaScript ES6</span>
+              <span class="tech-tag">Web Audio API</span>
+            </div>
+
+            <div class="project-card-bottom">
+              <span class="project-status">COMPLETE PLAYABLE BUILD</span>
+              <div class="project-arrow-btn" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 5. SKILLS SECTION (004) -->
+    <section id="skills" class="skills-section" aria-label="Skills and Technical Stack">
+      <div class="skills-header-container">
+        <div class="section-header-row">
+          <span class="section-index">004</span>
+          <span class="section-label">TECHNICAL COMPETENCIES</span>
+        </div>
+
+        <h2 class="skills-headline">
+          <span>My stack, always</span>
+          <span class="rotator-container" data-words='["learning", "growing", "shipping"]'>
+            <span class="rotator-word-box">
+              <span class="rotator-word is-active">learning</span>
+            </span>
+          </span>
+        </h2>
+      </div>
+
+      <!-- Infinite Velocity Marquee -->
+      <div class="marquee-wrapper" aria-label="Skills Marquee Ticker">
+        <!-- Row 1: Solid Ink Text -->
+        <div class="marquee-row">
+          <div class="marquee-content">
+            <span class="marquee-item">Python <span class="marquee-sep">✦</span></span>
+            <span class="marquee-item">FastAPI <span class="marquee-sep">✦</span></span>
+            <span class="marquee-item">Deep Learning <span class="marquee-sep">✦</span></span>
+            <span class="marquee-item">Generative AI <span class="marquee-sep">✦</span></span>
+            <span class="marquee-item">Agentic AI <span class="marquee-sep">✦</span></span>
+            <span class="marquee-item">PyTorch <span class="marquee-sep">✦</span></span>
+            <span class="marquee-item">Hugging Face <span class="marquee-sep">✦</span></span>
+            <span class="marquee-item">LangChain <span class="marquee-sep">✦</span></span>
+            <span class="marquee-item">RAG Architecture <span class="marquee-sep">✦</span></span>
+            <span class="marquee-item">Cloudflare Workers AI <span class="marquee-sep">✦</span></span>
+            <span class="marquee-item">Google Gemini <span class="marquee-sep">✦</span></span>
+          </div>
+        </div>
+
+        <!-- Row 2: Reverse Direction & Outline Typography -->
+        <div class="marquee-row marquee-row--reverse">
+          <div class="marquee-content">
+            <span class="marquee-item">Next.js <span class="marquee-sep">✦</span></span>
+            <span class="marquee-item">React <span class="marquee-sep">✦</span></span>
+            <span class="marquee-item">Node.js <span class="marquee-sep">✦</span></span>
+            <span class="marquee-item">Express <span class="marquee-sep">✦</span></span>
+            <span class="marquee-item">Prisma <span class="marquee-sep">✦</span></span>
+            <span class="marquee-item">PostgreSQL <span class="marquee-sep">✦</span></span>
+            <span class="marquee-item">Socket.io <span class="marquee-sep">✦</span></span>
+            <span class="marquee-item">OpenAI API <span class="marquee-sep">✦</span></span>
+            <span class="marquee-item">Motion Design <span class="marquee-sep">✦</span></span>
+            <span class="marquee-item">Flask <span class="marquee-sep">✦</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- How I Work Philosophy Block -->
+      <div class="philosophy-container">
+        <h3 class="philosophy-title">How I Work</h3>
+        <div class="philosophy-grid">
+          <div class="philosophy-card">
+            <span class="philosophy-num">01</span>
+            <h4 class="philosophy-step-title">Build with AI Tools</h4>
+            <p class="philosophy-step-text">I leverage modern AI coding assistants and LLMs to compress full-stack development timelines from months down to weeks.</p>
+          </div>
+          <div class="philosophy-card">
+            <span class="philosophy-num">02</span>
+            <h4 class="philosophy-step-title">Test Thoroughly</h4>
+            <p class="philosophy-step-text">Automated test suites validate every failover edge case, data isolation boundary, and webhook payload before deployment.</p>
+          </div>
+          <div class="philosophy-card">
+            <span class="philosophy-num">03</span>
+            <h4 class="philosophy-step-title">Debug Systematically</h4>
+            <p class="philosophy-step-text">Structured telemetry and isolated reproduction scripts eliminate edge-case regressions and latency bottlenecks.</p>
+          </div>
+          <div class="philosophy-card">
+            <span class="philosophy-num">04</span>
+            <h4 class="philosophy-step-title">Ship Without Delay</h4>
+            <p class="philosophy-step-text">Software only delivers value in users' hands. I prioritize production delivery, fast user loops, and iterative refinement.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. JOURNEY / TIMELINE SECTION (005) -->
+    <section id="timeline" class="timeline-section" aria-label="Journey Timeline">
+      <div class="section-header-row">
+        <span class="section-index">005</span>
+        <span class="section-label">TRAJECTORY</span>
+      </div>
+
+      <h2 class="timeline-headline">
+        <span>Milestones & Evolution</span>
+      </h2>
+
+      <div class="timeline-wrapper">
+        <!-- Vertical Progress Line -->
+        <div class="timeline-track-bg" aria-hidden="true"></div>
+        <div class="timeline-track-progress" aria-hidden="true"></div>
+
+        <ol class="timeline-list">
+          <li class="timeline-item">
+            <div class="timeline-year">2023</div>
+            <div class="timeline-node"><div class="timeline-dot"></div></div>
+            <div class="timeline-content">
+              <h3 class="timeline-milestone-title">Started B.Sc. Computer Science</h3>
+              <p class="timeline-milestone-desc">Enrolled at Govt. Swami Vivekanand College in Lakhnadon. Built deep fundamentals in algorithms, data structures, and Python.</p>
+            </div>
+          </li>
+
+          <li class="timeline-item">
+            <div class="timeline-year">2024</div>
+            <div class="timeline-node"><div class="timeline-dot"></div></div>
+            <div class="timeline-content">
+              <h3 class="timeline-milestone-title">Shipped CityKirana & Sky Jump</h3>
+              <p class="timeline-milestone-desc">Engineered lightweight client-side applications, mastering vanilla JavaScript performance, DOM mechanics, and canvas rendering.</p>
+            </div>
+          </li>
+
+          <li class="timeline-item">
+            <div class="timeline-year">2025</div>
+            <div class="timeline-node"><div class="timeline-dot"></div></div>
+            <div class="timeline-content">
+              <h3 class="timeline-milestone-title">Deep Learning & DealRadar Prototype</h3>
+              <p class="timeline-milestone-desc">Shifted focus to PyTorch, Hugging Face, and LLM integrations. Created DealRadar to extract sponsorship intent from creator inboxes.</p>
+            </div>
+          </li>
+
+          <li class="timeline-item">
+            <div class="timeline-year">2026</div>
+            <div class="timeline-node"><div class="timeline-dot"></div></div>
+            <div class="timeline-content">
+              <h3 class="timeline-milestone-title">Built and Shipped Siffty</h3>
+              <p class="timeline-milestone-desc">Architected end-to-end AI DM intelligence SaaS in under 6 months, deploying Cloudflare Workers AI edge models with Gemini fallback.</p>
+            </div>
+          </li>
+
+          <li class="timeline-item">
+            <div class="timeline-year">SEPT 2026</div>
+            <div class="timeline-node"><div class="timeline-dot"></div></div>
+            <div class="timeline-content">
+              <h3 class="timeline-milestone-title">Meta App Review Approved</h3>
+              <p class="timeline-milestone-desc">Achieved official Meta Graph API approval for Siffty, meeting enterprise standards for user data isolation, security, and privacy.</p>
+            </div>
+          </li>
+
+          <li class="timeline-item">
+            <div class="timeline-year">2026+</div>
+            <div class="timeline-node"><div class="timeline-dot"></div></div>
+            <div class="timeline-content">
+              <h3 class="timeline-milestone-title">Targeting AI Product & AI/ML Roles</h3>
+              <p class="timeline-milestone-desc">Prepared to bring autonomous execution, production AI engineering, and indie builder speed to high-impact teams.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 7. CONTACT SECTION & LIVE FOOTER (006) -->
+    <section id="contact" class="contact-section" aria-label="Contact Mubassir Shah">
+      <div class="section-header-row">
+        <span class="section-index">006</span>
+        <span class="section-label">GET IN TOUCH</span>
+      </div>
+
+      <h2 class="contact-headline">
+        <span>Let's build something</span>
+        <span class="rotator-container" data-words='["useful", "fast", "smart", "real"]'>
+          <span class="rotator-word-box">
+            <span class="rotator-word is-active">useful</span>
+          </span>
+        </span>
+      </h2>
+
+      <div class="contact-grid">
+        <!-- Left: Direct Channels & Resume Download -->
+        <div class="contact-info">
+          <p class="contact-lead">
+            Available for full-time AI Product, AI/ML Engineer, and Generative/Agentic AI roles in 2026.
+          </p>
+
+          <div class="contact-email-box">
+            <span class="micro-text micro-text--muted">DIRECT INQUIRIES</span>
+            <a href="mailto:mubassirrr2005@gmail.com" class="contact-email-link" data-magnetic>
+              mubassirrr2005@gmail.com
+            </a>
+          </div>
+
+          <div class="contact-socials-list">
+            <a href="https://github.com/dev-mubassir" target="_blank" rel="noopener noreferrer" class="social-row-link" data-magnetic>
+              <span>GITHUB</span>
+              <span class="social-handle">github.com/dev-mubassir ↗</span>
+            </a>
+            <a href="https://linkedin.com/in/mubassir-shah" target="_blank" rel="noopener noreferrer" class="social-row-link" data-magnetic>
+              <span>LINKEDIN</span>
+              <span class="social-handle">linkedin.com/in/mubassir-shah ↗</span>
+            </a>
+            <a href="https://instagram.com/mubassir.shah_" target="_blank" rel="noopener noreferrer" class="social-row-link" data-magnetic>
+              <span>INSTAGRAM</span>
+              <span class="social-handle">@mubassir.shah_ ↗</span>
+            </a>
+          </div>
+
+          <!-- Download Resume Button -->
+          <a href="assets/Mubassir_Shah_Resume.pdf" download="Mubassir_Shah_Resume.pdf" class="btn-resume" data-magnetic>
+            <span>DOWNLOAD RESUME (PDF)</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Right: Contact Form -->
+        <div class="contact-form-box">
+          <h3 class="form-title">Send a Direct Message</h3>
+          <form id="portfolio-contact-form" class="contact-form">
+            <div class="form-group">
+              <label for="form-name" class="form-label">YOUR NAME</label>
+              <input type="text" id="form-name" name="name" class="form-input" placeholder="e.g. Alex Hunter" required autocomplete="name">
+            </div>
+
+            <div class="form-group">
+              <label for="form-email" class="form-label">YOUR EMAIL</label>
+              <input type="email" id="form-email" name="email" class="form-input" placeholder="alex@company.com" required autocomplete="email">
+            </div>
+
+            <div class="form-group">
+              <label for="form-message" class="form-label">MESSAGE / OPPORTUNITY</label>
+              <textarea id="form-message" name="message" class="form-textarea" placeholder="Tell me about your role or project..." required></textarea>
+            </div>
+
+            <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
+
+            <button type="submit" class="btn-submit" data-magnetic>
+              <span>SEND INQUIRY</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Live IST Clock Footer -->
+      <footer class="site-footer">
+        <div class="footer-left">
+          <div class="footer-clock-row">
+            <span class="live-indicator" aria-hidden="true"></span>
+            <span id="live-clock" class="footer-time">00:00:00 IST</span>
+          </div>
+          <span class="footer-location">LAKHNADON, SEONI DISTRICT, MP, INDIA</span>
+        </div>
+
+        <div class="footer-right">
+          <span class="footer-copy">© 2026 MUBASSIR SHAH · ALL RIGHTS RESERVED</span>
+          <button class="btn-back-to-top" aria-label="Scroll back to top" data-magnetic>
+            BACK TO TOP ↑
+          </button>
+        </div>
+      </footer>
+    </section>
+  </main>
+
+  <!-- Main JavaScript Bootstrap -->
+  <script type="module" src="src/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,300 @@
+/* Siffty Flagship Case Study (002) */
+.siffty-section {
+  position: relative;
+  padding: clamp(80px, 12vh, 160px) clamp(24px, 4.5vw, 64px);
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+  overflow: hidden;
+}
+
+.siffty-section .section-header-row {
+  border-bottom-color: var(--color-paper-20);
+}
+
+.siffty-section .section-label {
+  color: var(--color-paper-60);
+}
+
+.siffty-hero-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: clamp(40px, 6vh, 72px);
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.siffty-title-group {
+  max-width: 800px;
+}
+
+.siffty-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-signal);
+  background-color: var(--color-signal-10);
+  border: 1px solid var(--color-signal-40);
+  padding: 4px 12px;
+  margin-bottom: 16px;
+}
+
+.siffty-headline {
+  font-family: var(--font-headline);
+  font-size: clamp(3rem, 7.5vw, 6.5rem);
+  font-weight: 900;
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  color: var(--color-paper);
+  text-transform: lowercase;
+}
+
+.siffty-headline .dot {
+  color: var(--color-signal);
+}
+
+.siffty-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-title);
+  font-size: 0.875rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background-color: var(--color-signal);
+  color: var(--color-ink);
+  padding: 14px 28px;
+  transition: transform 0.25s var(--ease-out-expo), background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-paper);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: none;
+  border: 1px solid var(--color-paper-40);
+  color: var(--color-paper);
+  padding: 14px 24px;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-signal);
+  color: var(--color-signal);
+}
+
+/* Metrics Ribbon */
+.siffty-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  border-top: 1px solid var(--color-paper-20);
+  border-bottom: 1px solid var(--color-paper-20);
+  padding: clamp(24px, 4vh, 48px) 0;
+  margin-bottom: clamp(48px, 8vh, 88px);
+}
+
+.metric-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.metric-num {
+  font-family: var(--font-numeral);
+  font-size: clamp(2.5rem, 5vw, 4.25rem);
+  line-height: 0.9;
+  color: var(--color-signal);
+  letter-spacing: -0.03em;
+}
+
+.metric-label {
+  font-family: var(--font-title);
+  font-size: 0.9375rem;
+  font-weight: 800;
+  color: var(--color-paper);
+}
+
+.metric-sub {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--color-paper-60);
+  line-height: 1.45;
+}
+
+/* Architecture Diagram Container */
+.siffty-diagram-wrapper {
+  background-color: var(--color-ink-90);
+  border: 1px solid var(--color-paper-20);
+  padding: clamp(24px, 4vw, 48px);
+  margin-bottom: clamp(48px, 8vh, 88px);
+}
+
+.diagram-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--color-paper-20);
+  padding-bottom: 12px;
+}
+
+.diagram-title {
+  font-family: var(--font-title);
+  font-size: 1.125rem;
+  font-weight: 800;
+  color: var(--color-paper);
+}
+
+.diagram-legend {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-signal);
+}
+
+.architecture-svg {
+  width: 100%;
+  height: auto;
+  min-height: 280px;
+  overflow: visible;
+}
+
+.arch-node {
+  fill: var(--color-ink);
+  stroke: var(--color-paper-40);
+  stroke-width: 1.5;
+  transition: stroke 0.3s ease;
+}
+
+.arch-node--active {
+  stroke: var(--color-signal);
+  stroke-width: 2;
+}
+
+.arch-node-title {
+  font-family: var(--font-title);
+  font-size: 12px;
+  font-weight: 800;
+  fill: var(--color-paper);
+}
+
+.arch-node-desc {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  fill: var(--color-paper-60);
+}
+
+.arch-connector {
+  stroke: var(--color-paper-40);
+  stroke-width: 1.5;
+  fill: none;
+  stroke-dasharray: 6 4;
+}
+
+.arch-connector--signal {
+  stroke: var(--color-signal);
+  stroke-width: 2;
+  fill: none;
+}
+
+.pulse-dot {
+  fill: var(--color-signal);
+}
+
+/* Details 2-Column: Tech Stack & Automated Testing */
+.siffty-details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(32px, 5vw, 64px);
+}
+
+.siffty-card {
+  border-top: 2px solid var(--color-paper-40);
+  padding-top: 20px;
+}
+
+.siffty-card-title {
+  font-family: var(--font-title);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--color-paper);
+  margin-bottom: 16px;
+}
+
+.tech-tags-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tech-pill {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  background-color: var(--color-paper-20);
+  color: var(--color-paper);
+  padding: 6px 14px;
+  border: 1px solid var(--color-paper-20);
+}
+
+.test-suite-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.test-item {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--color-paper-80);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.test-status-pill {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--color-signal);
+  background-color: var(--color-signal-10);
+  border: 1px solid var(--color-signal);
+  padding: 2px 6px;
+}
+
+@media (max-width: 900px) {
+  .siffty-metrics {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .siffty-details-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 500px) {
+  .siffty-metrics {
+    grid-template-columns: 1fr;
+  }
+}

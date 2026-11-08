@@ -1,0 +1,80 @@
+import { test, expect } from '@playwright/test';
+
+test.describe('Mubassir Shah Portfolio Suite', () => {
+  test('Page loads, runs loader, and renders hero correctly', async ({ page }) => {
+    const consoleErrors = [];
+    page.on('console', msg => {
+      if (msg.type() === 'error') consoleErrors.push(msg.text());
+    });
+
+    await page.goto('/');
+
+    // Verify Title and Meta
+    await expect(page).toHaveTitle(/Mubassir Shah/);
+    const metaDesc = page.locator('meta[name="description"]');
+    await expect(metaDesc).toHaveAttribute('content', /Mubassir Shah/);
+
+    // Wait for loader curtain wipe
+    await page.waitForTimeout(2200);
+
+    // Verify Hero
+    const heroHeadline = page.locator('.hero-headline');
+    await expect(heroHeadline).toBeVisible();
+    await expect(heroHeadline).toContainText('mubassir');
+
+    // Verify 5 rotating word headlines exist
+    const rotators = page.locator('.rotator-container');
+    await expect(rotators).toHaveCount(5);
+
+    // Verify Siffty Section & metrics
+    const sifftySection = page.locator('#siffty');
+    await expect(sifftySection).toBeVisible();
+    await expect(page.locator('.metric-num').first()).toContainText('99.6%');
+
+    // Verify Architecture Diagram SVG
+    const svgDiagram = page.locator('.architecture-svg');
+    await expect(svgDiagram).toBeVisible();
+
+    // Verify Projects Grid (4 projects)
+    const projectCards = page.locator('.project-card');
+    await expect(projectCards).toHaveCount(4);
+
+    // Verify Skills Marquee & Philosophy
+    const marquee = page.locator('.marquee-wrapper');
+    await expect(marquee).toBeVisible();
+    const philosophyCards = page.locator('.philosophy-card');
+    await expect(philosophyCards).toHaveCount(4);
+
+    // Verify Timeline Milestones
+    const timelineItems = page.locator('.timeline-item');
+    await expect(timelineItems).toHaveCount(6);
+
+    // Verify Contact & Live Clock
+    const clock = page.locator('#live-clock');
+    await expect(clock).toBeVisible();
+    const clockText = await clock.innerText();
+    expect(clockText).toContain('IST');
+
+    // Verify Resume link
+    const resumeBtn = page.locator('a[download="Mubassir_Shah_Resume.pdf"]');
+    await expect(resumeBtn).toHaveAttribute('href', 'assets/Mubassir_Shah_Resume.pdf');
+
+    // Verify 0 console errors
+    expect(consoleErrors).toHaveLength(0);
+  });
+
+  test('Menu overlay opens and closes', async ({ page }) => {
+    await page.goto('/');
+    await page.waitForTimeout(2000);
+
+    const openBtn = page.locator('.btn-menu-dots');
+    await openBtn.click();
+
+    const menu = page.locator('#menu-overlay');
+    await expect(menu).toHaveClass(/is-open/);
+
+    const closeBtn = page.locator('.btn-menu-close');
+    await closeBtn.click();
+    await expect(menu).not.toHaveClass(/is-open/);
+  });
+});
