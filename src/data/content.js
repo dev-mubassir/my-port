@@ -48,29 +48,25 @@ export const portfolioData = {
 
   about: {
     index: "001",
-    label: "PROFILE & BACKGROUND",
-    headlinePrefix: "Student by degree, builder by",
-    degree: "B.Sc. Computer Science (2023–2026)",
-    institution: "Govt. Swami Vivekanand College, Lakhnadon",
-    cgpa: "6.8 CGPA",
-    location: "Lakhnadon, Seoni District, Madhya Pradesh, India",
-    focus: "Python & Deep Learning",
-    targetRoles: [
-      "AI Product Manager / Engineer",
-      "AI / ML Engineer",
-      "Generative AI Specialist",
-      "Agentic AI Engineer"
+    label: "About",
+    headlinePrefix: "Shipping real AI, one",
+    rotatingWords: ["feature", "test", "release"],
+    headlineSuffix: "at a time",
+    p1: "I design, build and ship AI-powered software. My main project is Siffty, an AI platform that turns Instagram DMs into organised leads and replies. I built it in under six months and it was approved by Meta.",
+    p2: "I work with Python, FastAPI, Node.js and Next.js, and I connect LLM APIs with task-based routing, failover and automated tests. I care about reliability and cost: moving one classification task to a faster model cut Gemini token use by over 90 percent.",
+    p3: "I am now going deeper into Agentic AI, RAG and Deep Learning, and I am adding an AI agent workflow to Siffty. I am looking for an AI Engineer role where I can build and ship AI features with a team.",
+    atAGlance: [
+      { label: "Target role", value: "AI Engineer" },
+      { label: "Education", value: "B.Sc. Computer Science, 2023 to 2026, CGPA 6.8" },
+      { label: "Core stack", value: "Python, FastAPI, Node.js, Next.js" },
+      { label: "Learning now", value: "Agentic AI, RAG" },
+      { label: "Proof", value: "Siffty, in use by early-access creators" }
     ],
-    narrative: [
-      "I am an indie builder based in Lakhnadon, Madhya Pradesh. I study Computer Science and spend my days and nights shipping production software.",
-      "My core focus is Python, Deep Learning, and building practical AI agents that solve immediate operational bottlenecks.",
-      "I do not stop at prototypes. I architect complete full-stack SaaS systems with Python, FastAPI/Flask, Node.js backends, robust database models, and resilient AI API failover chains.",
-      "I learn by shipping real code to real users. When launch day comes, I craft motion design and launch videos using state-of-the-art AI video tools."
-    ],
-    highlights: [
-      { num: "01", label: "Autonomous Builder", text: "End-to-end development from zero to Meta-approved deployment." },
-      { num: "02", label: "Production AI", text: "Multi-model routing, fallback pipelines, and real-time inference." },
-      { num: "03", label: "Clean Engineering", text: "Automated test suites, strict data isolation, and low latency." }
+    proofCards: [
+      { num: "01", title: "Meta-approved product", text: "Siffty passed Meta App Review (Sept 2026)" },
+      { num: "02", title: "Production AI design", text: "task-based routing and automatic failover between AI providers" },
+      { num: "03", title: "Cost-aware", text: "over 90 percent lower Gemini token use after moving classification to Cloudflare Workers AI" },
+      { num: "04", title: "Tested", text: "five automated test suites, all passing" }
     ]
   },
 

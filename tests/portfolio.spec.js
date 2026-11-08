@@ -31,9 +31,16 @@ test.describe('Mubassir Shah Portfolio Suite', () => {
     await expect(sifftySection).toBeVisible();
     await expect(page.locator('.metric-num').first()).toContainText('99.6%');
 
-    // Verify Architecture Diagram SVG
+    // Verify Architecture Diagram SVG & Simulation button
     const svgDiagram = page.locator('.architecture-svg');
     await expect(svgDiagram).toBeVisible();
+
+    const simBtn = page.locator('.btn-simulate-failure');
+    await expect(simBtn).toContainText('Simulate primary model failure');
+    await simBtn.click();
+    await expect(simBtn).toContainText('Back to normal');
+    await simBtn.click();
+    await expect(simBtn).toContainText('Simulate primary model failure');
 
     // Verify Projects Grid (4 projects)
     const projectCards = page.locator('.project-card');

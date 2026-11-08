@@ -118,48 +118,52 @@
   color: var(--color-ink);
 }
 
-/* Three Pillars Highlight */
-.about-pillars {
+/* Four Proof Cards Grid (2x2 on mobile) */
+.about-proof-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 24px;
   margin-top: clamp(48px, 8vh, 80px);
   padding-top: clamp(32px, 5vh, 48px);
   border-top: 1px solid var(--color-ink-15);
 }
 
-.pillar-card {
+.proof-card {
   padding: 24px;
   background-color: var(--color-paper);
   border: 1px solid var(--color-ink-15);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   transition: transform 0.3s var(--ease-out-expo), border-color 0.2s ease;
 }
 
-.pillar-card:hover {
+.proof-card:hover {
   transform: translateY(-4px);
   border-color: var(--color-ink);
 }
 
-.pillar-num {
+.proof-num {
   font-family: var(--font-numeral);
-  font-size: 1.5rem;
+  font-size: 2rem;
+  line-height: 1;
   color: var(--color-signal);
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
-.pillar-title {
+.proof-title {
   font-family: var(--font-title);
-  font-size: 1.125rem;
+  font-size: 1.0625rem;
   font-weight: 800;
   color: var(--color-ink);
   margin-bottom: 8px;
 }
 
-.pillar-text {
+.proof-text {
   font-family: var(--font-mono);
   font-size: 0.8125rem;
   color: var(--color-ink-80);
-  line-height: 1.6;
+  line-height: 1.55;
 }
 
 @media (max-width: 900px) {
@@ -167,7 +171,18 @@
     grid-template-columns: 1fr;
     gap: 40px;
   }
-  .about-pillars {
-    grid-template-columns: 1fr;
+  .about-proof-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-proof-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .proof-card {
+    padding: 16px;
   }
 }

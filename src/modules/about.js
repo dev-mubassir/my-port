@@ -16,9 +16,9 @@ export function initAbout() {
       trigger: '#about',
       start: 'top 75%'
     },
-    y: 50,
+    y: 40,
     opacity: 0,
-    duration: 0.9,
+    duration: 0.8,
     ease: 'power3.out'
   });
 
@@ -27,10 +27,10 @@ export function initAbout() {
       trigger: '#about .about-bio',
       start: 'top 80%'
     },
-    y: 30,
+    y: 25,
     opacity: 0,
-    stagger: 0.12,
-    duration: 0.7,
+    stagger: 0.1,
+    duration: 0.6,
     ease: 'power2.out'
   });
 
@@ -41,20 +41,40 @@ export function initAbout() {
     },
     x: 20,
     opacity: 0,
-    stagger: 0.08,
-    duration: 0.6,
+    stagger: 0.06,
+    duration: 0.5,
     ease: 'power2.out'
   });
 
-  gsap.from('#about .pillar-card', {
-    scrollTrigger: {
-      trigger: '#about .about-pillars',
-      start: 'top 85%'
-    },
-    y: 40,
-    opacity: 0,
-    stagger: 0.12,
-    duration: 0.7,
-    ease: 'power3.out'
-  });
+  // Proof cards reveal and number count-up
+  const proofCards = document.querySelectorAll('#about .proof-card');
+  if (proofCards.length) {
+    gsap.from(proofCards, {
+      scrollTrigger: {
+        trigger: '#about .about-proof-grid',
+        start: 'top 85%'
+      },
+      y: 35,
+      opacity: 0,
+      stagger: 0.1,
+      duration: 0.6,
+      ease: 'power3.out',
+      onStart: () => {
+        proofCards.forEach((card, index) => {
+          const numEl = card.querySelector('.proof-num');
+          if (!numEl) return;
+          const target = index + 1;
+          const counter = { val: 0 };
+          gsap.to(counter, {
+            val: target,
+            duration: 1.2,
+            ease: 'power2.out',
+            onUpdate: () => {
+              numEl.textContent = String(Math.ceil(counter.val)).padStart(2, '0');
+            }
+          });
+        });
+      }
+    });
+  }
 }
