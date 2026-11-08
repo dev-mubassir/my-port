@@ -1,0 +1,326 @@
+/* Hero Section */
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(80px, 12vh, 120px) clamp(24px, 4.5vw, 64px) clamp(24px, 4vh, 48px);
+  background-color: var(--color-paper);
+  overflow: hidden;
+  z-index: 10;
+}
+
+/* Horizontal Orange Band */
+.hero-orange-band {
+  position: absolute;
+  top: 48%;
+  left: 32%;
+  right: 0;
+  height: clamp(140px, 20vw, 240px);
+  background-color: var(--color-signal);
+  transform: translateY(-50%);
+  z-index: 5;
+  overflow: hidden;
+  will-change: transform;
+}
+
+/* Cutout Photo Layers */
+.hero-photo-wrapper {
+  position: absolute;
+  right: clamp(16px, 7vw, 110px);
+  bottom: 0;
+  height: clamp(400px, 78vh, 820px);
+  width: auto;
+  aspect-ratio: 1 / 1;
+  z-index: 15;
+  pointer-events: auto;
+  user-select: none;
+}
+
+.hero-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom center;
+  filter: grayscale(100%) contrast(125%) brightness(95%);
+  display: block;
+}
+
+/* Orange Band Multiply Blend Layer */
+.hero-band-tint {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 6;
+  overflow: hidden;
+}
+
+.hero-band-photo-clone {
+  position: absolute;
+  /* Syncs identically with hero-photo-wrapper */
+  right: clamp(16px, 7vw, 110px);
+  /* Calculate offset relative to band */
+  bottom: calc(-1 * (50vh - clamp(70px, 10vw, 120px)));
+  height: clamp(400px, 78vh, 820px);
+  width: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  object-position: bottom center;
+  filter: grayscale(100%) contrast(140%);
+  mix-blend-mode: multiply;
+  opacity: 0.95;
+}
+
+/* Arrow Button at bottom-left of Orange Band */
+.hero-band-btn {
+  position: absolute;
+  left: 32%;
+  top: calc(48% + clamp(70px, 10vw, 120px));
+  width: clamp(40px, 3.5vw, 48px);
+  height: clamp(40px, 3.5vw, 48px);
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 25;
+  cursor: pointer;
+  transition: transform 0.3s var(--ease-out-expo), background-color 0.2s ease;
+}
+
+.hero-band-btn:hover {
+  background-color: var(--color-signal);
+  color: var(--color-ink);
+  transform: translateY(3px);
+}
+
+.hero-band-btn svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  fill: none;
+  transform: rotate(90deg);
+  transition: transform 0.3s var(--ease-out-expo);
+}
+
+.hero-band-btn:hover svg {
+  transform: rotate(90deg) translateX(2px);
+}
+
+/* Micro Columns above Title */
+.hero-micro-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(200px, 340px));
+  gap: clamp(24px, 4vw, 56px);
+  margin-bottom: clamp(24px, 4vh, 48px);
+  z-index: 20;
+  position: relative;
+}
+
+.hero-micro-col {
+  border-top: 1px solid var(--color-ink-20);
+  padding-top: 10px;
+}
+
+.hero-micro-col .micro-title {
+  font-family: var(--font-title);
+  font-weight: 800;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--color-ink);
+  margin-bottom: 4px;
+}
+
+.hero-micro-col .micro-desc {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  color: var(--color-ink-80);
+  line-height: 1.45;
+}
+
+/* Main Hero Typography */
+.hero-content {
+  position: relative;
+  z-index: 20;
+  max-width: 65%;
+}
+
+.hero-headline {
+  font-family: var(--font-headline);
+  font-size: clamp(3.75rem, 13.5vw, 11.5rem);
+  font-weight: 900;
+  line-height: 0.88;
+  letter-spacing: -0.05em;
+  text-transform: lowercase;
+  color: var(--color-ink);
+  margin-bottom: clamp(16px, 2.5vh, 28px);
+  user-select: none;
+}
+
+.hero-headline .dot {
+  color: var(--color-signal);
+}
+
+/* Hero Tagline with 3D Rotating Word */
+.hero-tagline {
+  font-family: var(--font-title);
+  font-size: clamp(1.25rem, 2.5vw, 2.125rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--color-ink-90);
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.35em;
+  line-height: 1.2;
+}
+
+/* Bottom Row of Hero */
+.hero-bottom-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+  z-index: 20;
+  position: relative;
+}
+
+/* Big Rotated 001 */
+.hero-index-001 {
+  font-family: var(--font-numeral);
+  font-size: clamp(3.5rem, 7vw, 6rem);
+  line-height: 0.85;
+  color: var(--color-ink);
+  transform: rotate(-90deg);
+  transform-origin: bottom left;
+  display: inline-block;
+  user-select: none;
+  letter-spacing: -0.04em;
+  margin-left: clamp(0px, 1vw, 12px);
+}
+
+/* Circular Rotating Badge */
+.hero-badge-wrapper {
+  position: absolute;
+  left: clamp(240px, 24vw, 380px);
+  bottom: clamp(10px, 3vh, 32px);
+  width: clamp(90px, 9vw, 115px);
+  height: clamp(90px, 9vw, 115px);
+  z-index: 25;
+}
+
+.badge-svg {
+  width: 100%;
+  height: 100%;
+  transform-origin: center center;
+}
+
+.badge-text {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  fill: var(--color-ink);
+  text-transform: uppercase;
+}
+
+.badge-center-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-signal);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+
+/* Rotated Bordered Vertical Text on Right */
+.hero-vertical-meta {
+  position: absolute;
+  right: clamp(16px, 2.5vw, 32px);
+  top: 28%;
+  z-index: 25;
+  writing-mode: vertical-rl;
+  border: 1px solid var(--color-ink);
+  padding: 12px 6px;
+  background-color: var(--color-paper);
+}
+
+.hero-vertical-meta span {
+  font-family: var(--font-mono);
+  font-size: clamp(0.625rem, 0.7vw, 0.75rem);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 900px) {
+  .hero-orange-band {
+    left: 15%;
+    top: 55%;
+    height: 180px;
+  }
+  
+  .hero-band-btn {
+    left: 15%;
+    top: calc(55% + 90px);
+  }
+
+  .hero-photo-wrapper {
+    right: -20px;
+    height: 60vh;
+    opacity: 0.85;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+  .hero-vertical-meta {
+    display: none;
+  }
+
+  .hero-micro-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-orange-band {
+    left: 0;
+    width: 100%;
+    top: 60%;
+    height: 150px;
+  }
+
+  .hero-band-btn {
+    left: 20px;
+    top: calc(60% + 75px);
+  }
+
+  .hero-photo-wrapper {
+    right: -40px;
+    height: 48vh;
+    bottom: 20px;
+  }
+
+  .hero-badge-wrapper {
+    left: auto;
+    right: 20px;
+    bottom: 16px;
+    width: 75px;
+    height: 75px;
+  }
+
+  .hero-index-001 {
+    font-size: 3rem;
+  }
+}

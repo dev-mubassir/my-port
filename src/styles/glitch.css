@@ -1,0 +1,140 @@
+/* Photo Glitch and Flicker */
+.glitch-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch-slice {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 18;
+}
+
+/* Ink Copy */
+.glitch-slice--ink {
+  background-color: var(--color-ink);
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: bottom center;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: bottom center;
+}
+
+/* Signal Orange Copy */
+.glitch-slice--signal {
+  background-color: var(--color-signal);
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  -webkit-mask-position: bottom center;
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: bottom center;
+  mix-blend-mode: screen;
+}
+
+/* Scanline Grayscale Texture */
+.glitch-scanlines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--color-ink-15) 0px,
+    var(--color-ink-15) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  pointer-events: none;
+  opacity: 0;
+  z-index: 22;
+  transition: opacity 0.1s ease;
+}
+
+/* Active Glitch State Classes */
+.is-glitching .glitch-scanlines {
+  opacity: 0.7;
+}
+
+.is-glitching .glitch-slice--ink {
+  opacity: 0.9;
+  animation: sliceJitterInk 0.28s steps(2, start) infinite;
+}
+
+.is-glitching .glitch-slice--signal {
+  opacity: 0.85;
+  animation: sliceJitterSignal 0.28s steps(2, start) infinite;
+}
+
+.is-glitching .hero-photo-img {
+  animation: photoFlicker 0.28s steps(2, start) infinite;
+}
+
+@keyframes sliceJitterInk {
+  0% {
+    clip-path: polygon(0 15%, 100% 15%, 100% 28%, 0 28%);
+    transform: translate(-4px, 1px);
+  }
+  30% {
+    clip-path: polygon(0 45%, 100% 45%, 100% 60%, 0 60%);
+    transform: translate(6px, -2px);
+  }
+  60% {
+    clip-path: polygon(0 75%, 100% 75%, 100% 88%, 0 88%);
+    transform: translate(-3px, 3px);
+  }
+  100% {
+    clip-path: polygon(0 30%, 100% 30%, 100% 42%, 0 42%);
+    transform: translate(3px, -1px);
+  }
+}
+
+@keyframes sliceJitterSignal {
+  0% {
+    clip-path: polygon(0 25%, 100% 25%, 100% 38%, 0 38%);
+    transform: translate(5px, -1px);
+  }
+  35% {
+    clip-path: polygon(0 60%, 100% 60%, 100% 74%, 0 74%);
+    transform: translate(-5px, 2px);
+  }
+  70% {
+    clip-path: polygon(0 8%, 100% 8%, 100% 22%, 0 22%);
+    transform: translate(4px, -3px);
+  }
+  100% {
+    clip-path: polygon(0 50%, 100% 50%, 100% 65%, 0 65%);
+    transform: translate(-2px, 2px);
+  }
+}
+
+@keyframes photoFlicker {
+  0% {
+    opacity: 0.95;
+    transform: translate(0, 0);
+  }
+  20% {
+    opacity: 0.45;
+    transform: translate(-2px, 1px);
+  }
+  40% {
+    opacity: 1;
+    transform: translate(3px, -1px);
+  }
+  60% {
+    opacity: 0.3;
+    transform: translate(-1px, 2px);
+  }
+  80% {
+    opacity: 0.85;
+    transform: translate(2px, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}

@@ -1,0 +1,43 @@
+/* 3D Vertical Rotating Word */
+.rotator-container {
+  display: inline-flex;
+  vertical-align: baseline;
+  position: relative;
+  perspective: 700px;
+  overflow: visible;
+  transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.rotator-word-box {
+  position: relative;
+  display: inline-flex;
+  align-items: baseline;
+  height: 1.15em;
+  transform-style: preserve-3d;
+}
+
+.rotator-word {
+  display: inline-block;
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-signal);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  backface-visibility: hidden;
+  transform-origin: 50% 50% -0.45em;
+  will-change: transform, opacity;
+  padding: 0 0.08em;
+}
+
+.rotator-word.is-active {
+  position: relative;
+}
+
+.rotator-word.is-next {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+}

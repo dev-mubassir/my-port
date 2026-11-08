@@ -1,0 +1,50 @@
+/* Custom Cursor */
+.custom-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-signal);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10002;
+  transform: translate(-50%, -50%);
+  transition: transform 0.15s ease, width 0.2s ease, height 0.2s ease, opacity 0.2s ease;
+  will-change: transform;
+}
+
+.custom-cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  border: 1.5px solid var(--color-ink-60);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 10001;
+  transform: translate(-50%, -50%);
+  transition: border-color 0.2s ease, width 0.25s var(--ease-out-expo), height 0.25s var(--ease-out-expo), background-color 0.2s ease;
+  will-change: transform;
+}
+
+/* Hover States */
+.cursor--hover .custom-cursor-ring {
+  width: 52px;
+  height: 52px;
+  border-color: var(--color-signal);
+  background-color: var(--color-signal-10);
+}
+
+.cursor--hover .custom-cursor-dot {
+  transform: translate(-50%, -50%) scale(1.6);
+}
+
+/* Hidden on touch or pointer coarse */
+@media (pointer: coarse) {
+  .custom-cursor-dot,
+  .custom-cursor-ring {
+    display: none !important;
+  }
+}
