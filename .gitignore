@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Build outputs
+dist/
+dist-ssr/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Test reports and artifacts
+playwright-report/
+test-results/
+screenshots/
+
+# Python virtual environment or temporary cache if any local tooling ran
+__pycache__/
+*.pyc
+.venv/
+env/
