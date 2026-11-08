@@ -3,7 +3,7 @@
   position: fixed;
   inset: 0;
   background-color: var(--color-signal);
-  z-index: 10000;
+  z-index: var(--z-loader);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -86,7 +86,7 @@
 .curtain-wipe {
   position: fixed;
   inset: 0;
-  z-index: 9999;
+  z-index: var(--z-loader);
   background-color: var(--color-ink);
   transform: translateY(100%);
   pointer-events: none;

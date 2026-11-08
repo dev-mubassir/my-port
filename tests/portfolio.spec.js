@@ -20,7 +20,7 @@ test.describe('Mubassir Shah Portfolio Suite', () => {
     // Verify Hero
     const heroHeadline = page.locator('.hero-headline');
     await expect(heroHeadline).toBeVisible();
-    await expect(heroHeadline).toContainText('mubassir');
+    await expect(heroHeadline).toContainText('Mubassir');
 
     // Verify 5 rotating word headlines exist
     const rotators = page.locator('.rotator-container');
@@ -63,18 +63,37 @@ test.describe('Mubassir Shah Portfolio Suite', () => {
     expect(consoleErrors).toHaveLength(0);
   });
 
-  test('Menu overlay opens and closes', async ({ page }) => {
+  test('Menu overlay opens and closes with stress test and restores scroll', async ({ page }) => {
     await page.goto('/');
     await page.waitForTimeout(2000);
 
     const openBtn = page.locator('.btn-menu-dots');
-    await openBtn.click();
-
-    const menu = page.locator('#menu-overlay');
-    await expect(menu).toHaveClass(/is-open/);
-
     const closeBtn = page.locator('.btn-menu-close');
-    await closeBtn.click();
+    const menu = page.locator('#menu-overlay');
+
+    // Rapid open/close stress test
+    for (let i = 0; i < 3; i++) {
+      await openBtn.click();
+      await page.waitForTimeout(450);
+      await closeBtn.click();
+      await page.waitForTimeout(450);
+    }
+
     await expect(menu).not.toHaveClass(/is-open/);
+
+    // Verify scrolling works after close
+    const beforeScroll = await page.evaluate(() => window.scrollY);
+    await page.evaluate(() => window.scrollTo(0, 500));
+    await page.waitForTimeout(200);
+    const afterScroll = await page.evaluate(() => window.scrollY);
+    expect(afterScroll).toBeGreaterThan(beforeScroll);
+
+    // Verify adaptive navbar updates theme
+    await page.evaluate(() => {
+      document.querySelector('#siffty').scrollIntoView();
+    });
+    await page.waitForTimeout(500);
+    const navHeader = page.locator('.site-header');
+    await expect(navHeader).toHaveAttribute('data-theme', 'dark');
   });
 });

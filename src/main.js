@@ -5,6 +5,7 @@ import { initRotators } from './modules/rotator.js';
 import { initCursor } from './modules/cursor.js';
 import { initScroll } from './modules/scroll.js';
 import { initMenu } from './modules/menu.js';
+import { initAdaptiveNavbar } from './modules/nav.js';
 import { initAbout } from './modules/about.js';
 import { initSiffty } from './modules/siffty.js';
 import { initProjects } from './modules/projects.js';
@@ -24,8 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initRotators();
   initTextScramble();
 
-  // Initialize Full-Screen Menu Overlay
+  // Initialize Full-Screen Menu Overlay & Adaptive Nav
   initMenu();
+  initAdaptiveNavbar();
 
   // Initialize Sections
   initHero();
