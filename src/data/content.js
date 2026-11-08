@@ -244,9 +244,16 @@ export const portfolioData = {
         desc: "Passed Meta's rigorous App Review for Instagram Graph API access, validating enterprise-grade security and user data privacy."
       },
       {
-        year: "2026+",
-        title: "Targeting AI Product & AI/ML Roles",
-        desc: "Ready to bring autonomous builder mindset, production AI integration skills, and fast execution to visionary engineering teams."
+        year: "Oct 2026",
+        title: "Workers AI Edge Optimization",
+        desc: "Moved Siffty's DM classification to Cloudflare Workers AI, cutting Gemini token use by over 90 percent."
+      },
+      {
+        year: "Next",
+        isUpcoming: true,
+        tag: "UPCOMING",
+        title: "Siffty major update: AI agent workflow",
+        desc: "I am learning Agentic AI and I am adding an AI agent workflow to Siffty."
       }
     ]
   },

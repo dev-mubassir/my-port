@@ -60,9 +60,13 @@ test.describe('Mubassir Shah Portfolio Suite', () => {
     const philosophyCards = page.locator('.philosophy-card');
     await expect(philosophyCards).toHaveCount(4);
 
-    // Verify Timeline Milestones
+    // Verify Timeline Milestones (7 items including Oct 2026 and Upcoming)
     const timelineItems = page.locator('.timeline-item');
-    await expect(timelineItems).toHaveCount(6);
+    await expect(timelineItems).toHaveCount(7);
+    const upcomingItem = page.locator('.timeline-item--upcoming');
+    await expect(upcomingItem).toBeVisible();
+    await expect(upcomingItem).toContainText('Siffty major update: AI agent workflow');
+    await expect(upcomingItem).toContainText('UPCOMING');
 
     // Verify Contact & Live Clock
     const clock = page.locator('#live-clock');

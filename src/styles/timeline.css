@@ -27,7 +27,7 @@
 .timeline-track-bg {
   position: absolute;
   top: 16px;
-  bottom: 32px;
+  bottom: 24px;
   left: clamp(20px, 12vw, 120px);
   width: 2px;
   background-color: var(--color-ink-15);
@@ -112,6 +112,61 @@
   color: var(--color-ink-80);
   line-height: 1.65;
   max-width: 720px;
+}
+
+/* Upcoming Milestone Styling */
+.timeline-item--upcoming {
+  position: relative;
+}
+
+.timeline-upcoming-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--color-paper);
+  border: 1.5px dashed var(--color-signal);
+  color: var(--color-signal);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 4px 8px;
+  text-transform: uppercase;
+}
+
+.pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-signal);
+  animation: pulseDot 2s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(0.75);
+  }
+}
+
+.timeline-dot--upcoming {
+  border-color: var(--color-signal);
+  background-color: var(--color-signal);
+  box-shadow: 0 0 8px var(--color-signal);
+}
+
+.timeline-content--upcoming {
+  border: 1.5px dashed var(--color-signal);
+  background-color: var(--color-ink-05);
+  padding: 16px clamp(16px, 2.5vw, 24px);
+}
+
+.timeline-content--upcoming .timeline-milestone-title {
+  color: var(--color-ink);
 }
 
 @media (max-width: 700px) {

@@ -43,6 +43,7 @@
 
 /* Hidden on touch or pointer coarse */
 @media (pointer: coarse) {
+
   .custom-cursor-dot,
   .custom-cursor-ring {
     display: none !important;
