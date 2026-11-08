@@ -68,14 +68,41 @@ test.describe('Mubassir Shah Portfolio Suite', () => {
     await expect(upcomingItem).toContainText('Siffty major update: AI agent workflow');
     await expect(upcomingItem).toContainText('UPCOMING');
 
-    // Verify Contact & Live Clock
+    // Verify Contact & Recruiter Card
+    const contactHeadline = page.locator('.contact-headline');
+    await expect(contactHeadline).toContainText('Open to AI Engineer roles');
+
+    const recruiterCard = page.locator('.recruiter-card');
+    await expect(recruiterCard).toBeVisible();
+    await expect(recruiterCard).toContainText('RECRUITER SNAPSHOT');
+    await expect(recruiterCard).toContainText('Python, FastAPI, Next.js');
+
+    // Test copy email button
+    const copyEmailBtn = page.locator('#btn-copy-email');
+    await expect(copyEmailBtn).toBeVisible();
+    await copyEmailBtn.click();
+    await expect(page.locator('#copy-email-text')).toContainText('Copied');
+
+    // Verify Schema.org Person JSON-LD
+    const jsonLd = await page.locator('script[type="application/ld+json"]').innerText();
+    const parsedLd = JSON.parse(jsonLd);
+    expect(parsedLd.name).toBe('Mubassir Shah');
+    expect(parsedLd.jobTitle).toBe('AI Engineer');
+
+    // Verify 3-Column Footer & Wordmark
+    const footerWordmark = page.locator('.footer-wordmark');
+    await expect(footerWordmark).toContainText('Mubassir');
+    const footerCols = page.locator('.footer-col');
+    await expect(footerCols).toHaveCount(3);
+
+    // Verify Live Clock
     const clock = page.locator('#live-clock');
     await expect(clock).toBeVisible();
     const clockText = await clock.innerText();
     expect(clockText).toContain('IST');
 
     // Verify Resume link
-    const resumeBtn = page.locator('a[download="Mubassir_Shah_Resume.pdf"]');
+    const resumeBtn = page.locator('a[download="Mubassir_Shah_Resume.pdf"]').first();
     await expect(resumeBtn).toHaveAttribute('href', 'assets/Mubassir_Shah_Resume.pdf');
 
     // Verify 0 console errors

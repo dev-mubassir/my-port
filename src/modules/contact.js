@@ -7,7 +7,7 @@ export function initContact() {
   const section = document.getElementById('contact');
   if (!section) return;
 
-  // Live IST Clock
+  // Live IST Clock (14px font size compliant)
   const clockEl = document.getElementById('live-clock');
   function updateClock() {
     if (!clockEl) return;
@@ -22,7 +22,6 @@ export function initContact() {
       });
       clockEl.textContent = `${timeStr} IST`;
     } catch {
-      // Fallback if timezone not supported
       const d = new Date();
       const utc = d.getTime() + (d.getTimezoneOffset() * 60000);
       const nd = new Date(utc + (3600000 * 5.5));
@@ -33,14 +32,47 @@ export function initContact() {
   setInterval(updateClock, 1000);
 
   // Back to top button
-  const topBtn = document.querySelector('.btn-back-to-top');
-  if (topBtn) {
-    topBtn.addEventListener('click', () => {
+  const topBtns = document.querySelectorAll('.btn-back-to-top');
+  topBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  });
+
+  // Copy email button with 2s feedback
+  const copyBtn = document.getElementById('btn-copy-email');
+  const copyText = document.getElementById('copy-email-text');
+  let copyTimeout = null;
+
+  if (copyBtn && copyText) {
+    copyBtn.addEventListener('click', async () => {
+      const email = 'mubassirrr2005@gmail.com';
+      try {
+        await navigator.clipboard.writeText(email);
+      } catch {
+        // Fallback for older browsers
+        const tempInput = document.createElement('input');
+        tempInput.value = email;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempInput);
+      }
+
+      copyText.textContent = 'Copied to clipboard!';
+      copyBtn.style.borderColor = 'var(--color-signal)';
+      copyBtn.style.color = 'var(--color-signal)';
+
+      if (copyTimeout) clearTimeout(copyTimeout);
+      copyTimeout = setTimeout(() => {
+        copyText.textContent = 'Copy email';
+        copyBtn.style.borderColor = '';
+        copyBtn.style.color = '';
+      }, 2000);
     });
   }
 
-  // Contact Form Submission
+  // Quick Note Form Submission
   const form = document.getElementById('portfolio-contact-form');
   const statusEl = document.getElementById('form-status');
 
@@ -58,16 +90,52 @@ export function initContact() {
 
       if (statusEl) statusEl.textContent = 'Opening your email client...';
 
-      const subject = encodeURIComponent(`Inquiry from ${name} via Portfolio`);
+      const subject = encodeURIComponent(`AI Engineer Opportunity / Inquiry from ${name}`);
       const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
       const mailtoLink = `mailto:mubassirrr2005@gmail.com?subject=${subject}&body=${body}`;
 
       window.location.href = mailtoLink;
 
       setTimeout(() => {
-        if (statusEl) statusEl.textContent = 'Message drafted! You can also email directly at mubassirrr2005@gmail.com';
+        if (statusEl) statusEl.textContent = 'Drafted! You can also email directly at mubassirrr2005@gmail.com';
       }, 1200);
     });
+  }
+
+  // Mobile Floating "HIRE ME" Pill
+  const mobilePill = document.getElementById('mobile-hire-pill');
+  if (mobilePill) {
+    const heroSection = document.getElementById('hero');
+    const menuOverlay = document.getElementById('menu-overlay');
+
+    function updatePillVisibility() {
+      if (window.innerWidth > 768) {
+        mobilePill.classList.remove('is-visible');
+        return;
+      }
+
+      const scrollY = window.scrollY;
+      const heroHeight = heroSection ? heroSection.offsetHeight : 600;
+      const contactRect = section.getBoundingClientRect();
+      const isContactInView = contactRect.top < window.innerHeight && contactRect.bottom > 0;
+      const isMenuOpen = menuOverlay && menuOverlay.classList.contains('is-open');
+
+      if (scrollY > heroHeight * 0.7 && !isContactInView && !isMenuOpen) {
+        mobilePill.classList.add('is-visible');
+      } else {
+        mobilePill.classList.remove('is-visible');
+      }
+    }
+
+    window.addEventListener('scroll', updatePillVisibility, { passive: true });
+    window.addEventListener('resize', updatePillVisibility, { passive: true });
+
+    mobilePill.addEventListener('click', e => {
+      e.preventDefault();
+      section.scrollIntoView({ behavior: 'smooth' });
+    });
+
+    updatePillVisibility();
   }
 
   // Scroll animations
@@ -79,21 +147,32 @@ export function initContact() {
       trigger: '#contact',
       start: 'top 75%'
     },
-    y: 50,
+    y: 40,
     opacity: 0,
     duration: 0.8,
     ease: 'power3.out'
   });
 
-  gsap.from('#contact .contact-grid > *', {
+  gsap.from('#contact .recruiter-card', {
     scrollTrigger: {
-      trigger: '#contact .contact-grid',
-      start: 'top 80%'
+      trigger: '#contact .recruiter-card',
+      start: 'top 85%'
     },
-    y: 40,
+    y: 30,
     opacity: 0,
-    stagger: 0.15,
     duration: 0.7,
+    ease: 'power2.out'
+  });
+
+  gsap.from('#contact .contact-actions-box', {
+    scrollTrigger: {
+      trigger: '#contact .contact-actions-box',
+      start: 'top 85%'
+    },
+    y: 30,
+    opacity: 0,
+    duration: 0.7,
+    delay: 0.1,
     ease: 'power2.out'
   });
 }
