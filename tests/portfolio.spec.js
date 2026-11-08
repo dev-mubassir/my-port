@@ -42,9 +42,17 @@ test.describe('Mubassir Shah Portfolio Suite', () => {
     await simBtn.click();
     await expect(simBtn).toContainText('Simulate primary model failure');
 
-    // Verify Projects Grid (4 projects)
+    // Verify Projects Grid (4 projects with media preview and captions)
     const projectCards = page.locator('.project-card');
     await expect(projectCards).toHaveCount(4);
+    const projectImages = page.locator('.project-card-media img');
+    await expect(projectImages).toHaveCount(4);
+    const projectCaptions = page.locator('.project-card-caption');
+    await expect(projectCaptions.first()).toContainText('Illustrative preview');
+
+    // Verify Open Graph and Twitter image
+    const ogImg = page.locator('meta[property="og:image"]');
+    await expect(ogImg).toHaveAttribute('content', /og-image\.webp/);
 
     // Verify Skills Marquee & Philosophy
     const marquee = page.locator('.marquee-wrapper');

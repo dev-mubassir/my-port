@@ -57,3 +57,4 @@ export function initAdaptiveNavbar() {
     }
   }, { passive: true });
 }
+

@@ -128,7 +128,9 @@ export const portfolioData = {
       tech: ["Next.js", "Node.js", "Workers AI", "Gemini", "Prisma", "Postgres"],
       desc: "Meta-approved AI DM triage engine for creators and businesses. Automatically classifies incoming messages into sponsorships, high-value leads, and support queries.",
       link: "https://siffty.com",
-      status: "Live in Early Access"
+      status: "Live in Early Access",
+      image: "assets/projects/siffty-1600.webp",
+      imageMobile: "assets/projects/siffty-800.webp"
     },
     {
       id: "dealradar",
@@ -140,7 +142,9 @@ export const portfolioData = {
       tech: ["Python", "FastAPI", "OpenAI API", "Regex Parsers"],
       desc: "An intelligent scanner engineered to surface high-paying brand sponsorship deals buried inside creator inboxes, extracting deliverables and proposed budgets.",
       link: "https://github.com/dev-mubassir",
-      status: "Precursor Prototype to Siffty"
+      status: "Precursor Prototype to Siffty",
+      image: "assets/projects/dealradar-1600.webp",
+      imageMobile: "assets/projects/dealradar-800.webp"
     },
     {
       id: "citykirana",
@@ -152,7 +156,9 @@ export const portfolioData = {
       tech: ["Vanilla JavaScript", "HTML5", "CSS3", "Local Storage"],
       desc: "Lightweight, zero-framework eCommerce web application tailored for local grocery and essentials ordering in Lakhnadon. Fast loading on 3G connections.",
       link: "https://github.com/dev-mubassir",
-      status: "Deployed Locally"
+      status: "Deployed Locally",
+      image: "assets/projects/citykirana-1600.webp",
+      imageMobile: "assets/projects/citykirana-800.webp"
     },
     {
       id: "skyjump",
@@ -164,7 +170,9 @@ export const portfolioData = {
       tech: ["HTML5 Canvas", "JavaScript ES6", "Web Audio API"],
       desc: "Physics-based vertical arcade jumper built purely in vanilla JS and canvas. Features responsive collision physics, procedural platform generation, and high-score tracking.",
       link: "https://github.com/dev-mubassir",
-      status: "Complete Playable Build"
+      status: "Complete Playable Build",
+      image: "assets/projects/skyjump-1600.webp",
+      imageMobile: "assets/projects/skyjump-800.webp"
     }
   ],
 

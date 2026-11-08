@@ -26,3 +26,4 @@ async function process() {
 }
 
 process().catch(console.error);
+
