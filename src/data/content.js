@@ -1,9 +1,9 @@
 export const portfolioData = {
   meta: {
     name: "Mubassir Shah",
-    role: "AI Product Builder & Engineer",
-    title: "Mubassir Shah — AI Product Builder & Software Engineer",
-    description: "Personal portfolio of Mubassir Shah. AI/ML student and indie SaaS builder. Creator of Siffty. Open to AI Product, AI/ML, Generative AI, and Agentic AI roles 2026.",
+    role: "AI Engineer",
+    title: "Mubassir Shah — AI Engineer",
+    description: "Personal portfolio of Mubassir Shah. AI/ML student and indie SaaS builder. Creator of Siffty. Open to AI Engineer, AI/ML, and Agentic AI roles 2026.",
     url: "https://dev-mubassir.github.io/my-port/",
     location: "Lakhnadon, Seoni, MP, India",
     email: "mubassirrr2005@gmail.com",
@@ -20,8 +20,8 @@ export const portfolioData = {
       words: ["ships", "scales", "sells", "works"]
     },
     about: {
-      prefix: "Student by degree, builder by",
-      words: ["habit", "choice", "night", "design"]
+      prefix: "Shipping real AI, one",
+      words: ["feature", "test", "release"]
     },
     projects: {
       prefix: "Things I have",
@@ -32,17 +32,17 @@ export const portfolioData = {
       words: ["learning", "growing", "shipping"]
     },
     contact: {
-      prefix: "Let's build something",
-      words: ["useful", "fast", "smart", "real"]
+      prefix: "Open to AI Engineer roles. Let's",
+      words: ["talk", "build", "ship"]
     }
   },
 
   hero: {
-    badge: "AVAILABLE FOR WORK • AI / ML • 2026 •",
-    col1: "AI PRODUCT BUILDER / PYTHON · FASTAPI · NEXT.JS",
+    badge: "OPEN TO AI ENGINEER ROLES • 2026 •",
+    col1: "AI ENGINEER / PYTHON · FASTAPI · NEXT.JS",
     col2: "BASED IN LAKHNADON, MP, INDIA / OPEN TO AI-ML ROLES 2026",
-    title: "mubassir.",
-    verticalText: "MUBASSIR SHAH — AI PRODUCT BUILDER — PORTFOLIO 2026",
+    title: "Mubassir.",
+    verticalText: "MUBASSIR SHAH — AI ENGINEER — PORTFOLIO 2026",
     indexNum: "001"
   },
 

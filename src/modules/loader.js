@@ -19,7 +19,7 @@ export function initLoader(onComplete) {
     return;
   }
 
-  const targetWord = 'mubassir.';
+  const targetWord = 'Mubassir.';
   const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_#<>!/';
   const state = { value: 0 };
 

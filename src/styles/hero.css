@@ -29,11 +29,11 @@
 /* Cutout Photo Layers */
 .hero-photo-wrapper {
   position: absolute;
-  right: clamp(16px, 7vw, 110px);
+  right: clamp(16px, 7vw, 120px);
   bottom: 0;
-  height: clamp(400px, 78vh, 820px);
+  height: clamp(440px, 80vh, 860px);
   width: auto;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 581 / 1024;
   z-index: 15;
   pointer-events: auto;
   user-select: none;
@@ -44,7 +44,7 @@
   height: 100%;
   object-fit: contain;
   object-position: bottom center;
-  filter: grayscale(100%) contrast(125%) brightness(95%);
+  filter: grayscale(100%) contrast(120%) brightness(100%);
   display: block;
 }
 
@@ -60,15 +60,15 @@
 .hero-band-photo-clone {
   position: absolute;
   /* Syncs identically with hero-photo-wrapper */
-  right: clamp(16px, 7vw, 110px);
+  right: clamp(16px, 7vw, 120px);
   /* Calculate offset relative to band */
   bottom: calc(-1 * (50vh - clamp(70px, 10vw, 120px)));
-  height: clamp(400px, 78vh, 820px);
+  height: clamp(440px, 80vh, 860px);
   width: auto;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 581 / 1024;
   object-fit: contain;
   object-position: bottom center;
-  filter: grayscale(100%) contrast(140%);
+  filter: grayscale(100%) contrast(135%);
   mix-blend-mode: multiply;
   opacity: 0.95;
 }
@@ -155,7 +155,6 @@
   font-weight: 900;
   line-height: 0.88;
   letter-spacing: -0.05em;
-  text-transform: lowercase;
   color: var(--color-ink);
   margin-bottom: clamp(16px, 2.5vh, 28px);
   user-select: none;

@@ -1,6 +1,6 @@
 # Mubassir Shah - Personal Portfolio
 
-Personal portfolio website for Mubassir Shah, an AI/ML-focused student and indie SaaS builder targeting AI Product, AI/ML, Generative AI, and Agentic AI roles, and showcasing Siffty.
+Personal portfolio website for Mubassir Shah, an AI Engineer and indie SaaS builder targeting AI Engineer, AI/ML, and Agentic AI roles, and showcasing Siffty.
 
 ## Stack
 

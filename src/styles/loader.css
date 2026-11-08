@@ -61,7 +61,6 @@
   line-height: 0.9;
   color: var(--color-ink);
   letter-spacing: -0.04em;
-  text-transform: lowercase;
 }
 
 .loader-word .dot {
