@@ -1,7 +1,7 @@
 # Implementation Tasks
 
-- [ ] T01: Git and GitHub repo setup (`git init`, branch `main`, git config, `.gitignore`, minimalist `README.md`, `gh repo create my-port`, initial commit & push)
-- [ ] T02: Phase 0 Research (web search for 10 creative portfolio ideas across kinetic typography, glitch, preloaders, etc.; document in `RESEARCH.md`)
+- [x] T01: Git and GitHub repo setup (`git init`, branch `main`, git config, `.gitignore`, minimalist `README.md`, `gh repo create my-port`, initial commit & push)
+- [x] T02: Phase 0 Research (web search for 10 creative portfolio ideas across kinetic typography, glitch, preloaders, etc.; document in `RESEARCH.md`)
 - [ ] T03: Project scaffold & dev dependencies (`package.json`, Vite, GSAP + ScrollTrigger, Lenis, Sharp, Playwright, folder architecture)
 - [ ] T04: Palette sampling with Sharp & design system setup (`tokens.css`, `base.css`, Google Fonts: Archivo, Syne, Anton, Instrument Serif, JetBrains Mono)
 - [ ] T05: Photo cutout generation & optimization (`mubassir.png` -> `assets/mubassir-cutout.png` high contrast cutout & webp conversion)
