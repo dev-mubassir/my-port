@@ -56,6 +56,7 @@ export function initCursor() {
 }
 
 function initMagneticElements() {
+  if (window.matchMedia('(pointer: coarse)').matches || 'ontouchstart' in window) return;
   const magnets = document.querySelectorAll('[data-magnetic]');
   magnets.forEach(el => {
     el.addEventListener('mousemove', e => {
