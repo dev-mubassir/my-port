@@ -5,7 +5,7 @@
 - [x] T03: Project scaffold & dev dependencies (`package.json`, Vite, GSAP + ScrollTrigger, Lenis, Sharp, Playwright, folder architecture)
 - [x] T04: Palette sampling with Sharp & design system setup (`tokens.css`, `base.css`, Google Fonts: Archivo, Syne, Anton, Instrument Serif, JetBrains Mono)
 - [x] T05: Photo cutout generation & optimization (`mubassir.png` -> `assets/mubassir-cutout.png` high contrast cutout & webp conversion)
-- [ ] T06: Data layer (`src/data/content.js` with Mubassir's profile, Siffty case study, projects, skills, timeline, contact)
+- [x] T06: Data layer (`src/data/content.js` with Mubassir's profile, Siffty case study, projects, skills, timeline, contact)
 - [ ] T07: Animated Full-Screen Loader (`src/modules/loader.js`, `src/styles/loader.css` - orange 000-100 counter, glitch text, curtain wipe)
 - [ ] T08: Hero Section (`src/modules/hero.js`, `src/styles/hero.css` - frame, nav, logo +MS, micro columns, lowercase "mubassir.", orange band, cutout overlay, vertical text, 001, circular badge)
 - [ ] T09: Photo Glitch & Flicker Effect (`src/modules/glitch.js`, `src/styles/glitch.css` - CSS slice offsets, steps() jitter, opacity flicker, scanlines, ink & orange copies only)
