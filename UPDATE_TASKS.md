@@ -11,4 +11,4 @@
 - [x] U09: CONTACT: FOR HR AND RECRUITERS (Headline "Open to AI Engineer roles. Let's [ talk / build / ship ]", Recruiter snapshot card, 44px buttons including "Copy email" with confirmation, JSON-LD Person schema, mobile floating "HIRE ME" pill)
 - [x] U10: FOOTER: CLEARER AND PROFESSIONAL (Ink background, paper text min 14px, "Mubassir." wordmark, Navigate / Connect / Project columns, bottom bar with live clock)
 - [x] U11: MOBILE OPTIMISATION (360, 390, 412, 768 px no horizontal scroll, fluid clamp, gsap.matchMedia, native touch scroll, disable hover/cursor on touch, touch tap targets)
-- [ ] U12: FINAL QA LOOP & AUDIT (Colour audit, font audit, name audit, nav audit, about audit, lighthouse/e2e tests, mobile check, clean git push)
+- [x] U12: FINAL QA LOOP & AUDIT (Colour audit, font audit, name audit, nav audit, about audit, lighthouse/e2e tests, mobile check, clean git push)
