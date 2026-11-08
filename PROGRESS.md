@@ -4,3 +4,4 @@
 - 2026-11-08: T01 completed. Initialized git repository, linked to dev-mubassir/my-port, committed initial files, and pushed to main.
 - 2026-11-08: T02 completed. Researched 10 Awwwards-tier kinetic and micro-interaction patterns, selected 10 adapted to editorial palette, documented in RESEARCH.md.
 - 2026-11-08: T03 completed. Created package.json with GSAP, Lenis, Vite, Sharp, and Playwright, configured vite.config.js, validated clean build.
+- 2026-11-08: T04 completed. Exact color palette sampled with Sharp (#DCDCDC paper, #0A0A0A ink, #FF4B2B signal orange, #8C8C8C backdrop gray), established tokens.css and base.css with strict color enforcement and font pairings.
