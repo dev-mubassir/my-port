@@ -1,0 +1,253 @@
+/* ==========================================================================
+   Sound Toggle Button & Equalizer Styles
+   Mubassir Shah Portfolio - Audio System
+   ========================================================================== */
+
+/* 44x44px touch target icon button */
+.btn-sound-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+  color: var(--nav-fg, var(--color-ink, #0A0A0A));
+  transition: transform 0.25s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)),
+              color 0.25s ease,
+              border-color 0.25s ease;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-sound-toggle:hover {
+  transform: scale(1.08);
+}
+
+.btn-sound-toggle:active {
+  transform: scale(0.95);
+}
+
+/* Keyboard accessibility: visible focus ring */
+.btn-sound-toggle:focus-visible {
+  outline: 2px solid var(--color-signal, #FF4B2B);
+  outline-offset: 3px;
+}
+
+/* Minimal 4-bar equalizer icon container */
+.equalizer-icon {
+  display: inline-flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 2.5px;
+  width: 18px;
+  height: 16px;
+  pointer-events: none;
+  position: relative;
+}
+
+/* Equalizer bars (Signal color: #FF4B2B) */
+.sound-bar {
+  display: block;
+  width: 2px;
+  height: 100%;
+  background-color: var(--color-signal, #FF4B2B);
+  border-radius: 1px;
+  transform-origin: bottom center;
+  transform: scaleY(0.2);
+  transition: transform 0.25s ease, background-color 0.25s ease;
+  will-change: transform;
+}
+
+/* Idle / off state: bars are flat low lines */
+.btn-sound-toggle:not(.is-playing) .sound-bar {
+  animation: none;
+  transform: scaleY(0.2);
+}
+
+/* Playing state: staggered elegant equalizer animations (0.4s to 0.8s) */
+.btn-sound-toggle.is-playing .sound-bar--1 {
+  animation: eqPulse1 0.65s ease-in-out infinite alternate;
+}
+
+.btn-sound-toggle.is-playing .sound-bar--2 {
+  animation: eqPulse2 0.42s ease-in-out infinite alternate 0.1s;
+}
+
+.btn-sound-toggle.is-playing .sound-bar--3 {
+  animation: eqPulse3 0.78s ease-in-out infinite alternate 0.22s;
+}
+
+.btn-sound-toggle.is-playing .sound-bar--4 {
+  animation: eqPulse4 0.52s ease-in-out infinite alternate 0.05s;
+}
+
+@keyframes eqPulse1 {
+  0% { transform: scaleY(0.25); }
+  50% { transform: scaleY(0.85); }
+  100% { transform: scaleY(0.4); }
+}
+
+@keyframes eqPulse2 {
+  0% { transform: scaleY(0.7); }
+  50% { transform: scaleY(0.2); }
+  100% { transform: scaleY(1); }
+}
+
+@keyframes eqPulse3 {
+  0% { transform: scaleY(0.35); }
+  50% { transform: scaleY(0.95); }
+  100% { transform: scaleY(0.5); }
+}
+
+@keyframes eqPulse4 {
+  0% { transform: scaleY(0.8); }
+  50% { transform: scaleY(0.3); }
+  100% { transform: scaleY(0.65); }
+}
+
+/* prefers-reduced-motion: static lines (no animation) */
+@media (prefers-reduced-motion: reduce) {
+  .btn-sound-toggle.is-playing .sound-bar {
+    animation: none !important;
+    transform: scaleY(0.7) !important;
+  }
+  .btn-sound-toggle.has-pulse {
+    animation: none !important;
+  }
+}
+
+/* Orange pulse ring animation */
+@keyframes soundPulseRing {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 75, 43, 0.75);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 75, 43, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 75, 43, 0);
+  }
+}
+
+.btn-sound-toggle.has-pulse {
+  animation: soundPulseRing 1.8s cubic-bezier(0.25, 1, 0.5, 1) 1;
+}
+
+/* First-visit Tooltip */
+.sound-toggle-tooltip {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background-color: var(--color-ink, #0A0A0A);
+  color: var(--color-paper, #DCDCDC);
+  border: 1px solid var(--color-signal, #FF4B2B);
+  font-family: var(--font-mono, monospace);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: 0.04em;
+  padding: 6px 10px;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: var(--z-nav, 100);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.3s ease, transform 0.3s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1));
+}
+
+.sound-toggle-tooltip.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Tooltip top arrow pointer */
+.sound-toggle-tooltip::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  right: 18px;
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-ink, #0A0A0A);
+  border-top: 1px solid var(--color-signal, #FF4B2B);
+  border-left: 1px solid var(--color-signal, #FF4B2B);
+  transform: rotate(45deg);
+}
+
+/* Nav theme responsiveness */
+.site-header[data-theme="dark"] .btn-sound-toggle {
+  color: var(--color-paper, #DCDCDC);
+}
+
+.site-header[data-theme="light"] .btn-sound-toggle {
+  color: var(--color-ink, #0A0A0A);
+}
+
+/* Mobile Menu Overlay Sound Row Integration */
+.menu-sound-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 12px 0;
+  border-top: 1px solid var(--color-paper-20, rgba(220, 220, 220, 0.2));
+  border-bottom: 1px solid var(--color-paper-20, rgba(220, 220, 220, 0.2));
+  margin: 16px 0;
+}
+
+.menu-sound-label {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-paper-80, rgba(220, 220, 220, 0.8));
+}
+
+#menu-overlay .btn-sound-toggle {
+  border: 1px solid var(--color-paper-20, rgba(220, 220, 220, 0.2));
+  border-radius: 0;
+  background-color: transparent;
+  color: var(--color-paper, #DCDCDC);
+}
+
+#menu-overlay .btn-sound-toggle:hover {
+  border-color: var(--color-signal, #FF4B2B);
+  color: var(--color-signal, #FF4B2B);
+}
+
+#menu-overlay .btn-sound-toggle:focus-visible {
+  outline: 2px solid var(--color-signal, #FF4B2B);
+}
+
+/* Responsive Viewport <= 400px Handling */
+@media (max-width: 400px) {
+  .site-header .btn-sound-toggle.hide-on-compact {
+    display: none !important;
+  }
+
+  .sound-toggle-tooltip {
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%) translateY(-4px);
+  }
+
+  .sound-toggle-tooltip.is-visible {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  .sound-toggle-tooltip::before {
+    right: auto;
+    left: 50%;
+    margin-left: -3px;
+  }
+}
