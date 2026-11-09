@@ -1,0 +1,147 @@
+/* ==========================================================================
+   About Section Animations (Task H02)
+   - Zero-CLS typewriter wrapping & blinking orange block caret
+   - Headline overflow mask reveal
+   - At-A-Glance animated table rules
+   - Proof card entrance & reduced-motion overrides
+   ========================================================================== */
+
+/* 1. Typewriter Typography & Zero-CLS Wrapping */
+.type-content {
+  display: inline;
+}
+
+.type-word {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.type-char {
+  display: inline;
+  opacity: 0;
+  will-change: opacity;
+}
+
+.type-space {
+  display: inline;
+}
+
+/* 2. Orange Block Caret */
+.type-caret {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.15em;
+  vertical-align: -0.15em;
+  background-color: var(--color-signal);
+  margin-right: -0.55em;
+  margin-left: 1px;
+  pointer-events: none;
+  will-change: opacity;
+}
+
+.type-caret.is-blinking {
+  animation: typeCaretBlink 0.8s steps(1, start) infinite;
+}
+
+@keyframes typeCaretBlink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.type-caret.is-fading {
+  animation: none;
+  transition: opacity 0.6s ease-out;
+  opacity: 0;
+}
+
+/* 3. Headline Overflow Mask Reveal */
+.headline-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.headline-word {
+  display: inline-block;
+  will-change: transform;
+}
+
+.rotator-mask {
+  display: inline-flex;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+/* 4. At-A-Glance Animated Table Rules */
+.about-facts.anim-ready {
+  border-top: none;
+  position: relative;
+}
+
+.about-facts.anim-ready .fact-row {
+  border-bottom: none;
+  position: relative;
+}
+
+.about-facts-rule-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--color-ink);
+  transform-origin: left center;
+  will-change: transform;
+}
+
+.fact-row-rule {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: var(--color-ink-15);
+  transform-origin: left center;
+  will-change: transform;
+}
+
+/* 5. Reduced Motion Overrides */
+@media (prefers-reduced-motion: reduce) {
+  .type-char {
+    opacity: 1 !important;
+  }
+
+  .type-caret {
+    display: none !important;
+    animation: none !important;
+  }
+
+  .headline-mask,
+  .rotator-mask {
+    overflow: visible !important;
+  }
+
+  .headline-word,
+  .rotator-container {
+    transform: none !important;
+  }
+
+  .about-facts-rule-top,
+  .fact-row-rule {
+    transform: none !important;
+    scale: 1 !important;
+  }
+
+  .fact-label {
+    opacity: 1 !important;
+  }
+
+  .proof-card {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
