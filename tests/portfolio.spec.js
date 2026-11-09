@@ -67,8 +67,10 @@ test.describe('Mubassir Shah Portfolio Suite', () => {
     await expect(timelineItems).toHaveCount(7);
     const upcomingItem = page.locator('.timeline-item--upcoming');
     await expect(upcomingItem).toBeVisible();
-    await expect(upcomingItem).toContainText('Upcoming: B.Sc. graduation');
+    await expect(upcomingItem).toContainText('Siffty major update');
+    await expect(upcomingItem).toContainText('Adding an AI agent workflow');
     await expect(upcomingItem).toContainText('UPCOMING');
+    await expect(upcomingItem).toContainText('NEXT');
 
     // Verify Contact & Recruiter Card
     const contactHeadline = page.locator('.contact-headline');

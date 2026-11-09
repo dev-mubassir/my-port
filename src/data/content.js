@@ -249,11 +249,11 @@ export const portfolioData = {
         desc: "Moved Siffty's DM classification to Cloudflare Workers AI, cutting Gemini token use by over 90 percent."
       },
       {
-        year: "Next",
+        year: "NEXT",
         isUpcoming: true,
         tag: "UPCOMING",
-        title: "Siffty major update: AI agent workflow",
-        desc: "I am learning Agentic AI and I am adding an AI agent workflow to Siffty."
+        title: "Siffty major update",
+        desc: "Adding an AI agent workflow, improving the label system and adding more automation. I am learning Agentic AI as I build it."
       }
     ]
   },

@@ -119,6 +119,21 @@
   position: relative;
 }
 
+.timeline-item--upcoming .timeline-year {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.timeline-year-text {
+  font-family: var(--font-numeral);
+  font-size: clamp(1.25rem, 2vw, 1.75rem);
+  color: var(--color-signal);
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
 .timeline-upcoming-badge {
   display: inline-flex;
   align-items: center;
@@ -220,6 +235,13 @@
     color: var(--color-signal);
     margin-bottom: 2px;
     padding-right: 0;
+  }
+
+  .timeline-item--upcoming .timeline-year {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
   }
 
   .timeline-content {
