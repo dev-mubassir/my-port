@@ -22,8 +22,8 @@ let isControllerInitialized = false;
 // Set of all registered toggle buttons in DOM
 const registeredButtons = new Set();
 
-// One-time interaction listener trackers
-const INTERACTION_EVENTS = ['pointerdown', 'touchend', 'keydown'];
+// One-time interaction listener trackers (starts audio on first gesture if autoplay policy blocks initial unmuted play)
+const INTERACTION_EVENTS = ['pointerdown', 'touchstart', 'touchend', 'click', 'keydown', 'wheel'];
 let interactionBound = false;
 
 /* ==========================================================================
@@ -338,16 +338,36 @@ function startAudio() {
     }
   }
 
-  // Set volume = 0, start track from START_AT_SECONDS (0:00), call .play(), fade volume up to VOLUME over FADE_SECONDS
+  // Set volume = 0, start track from START_AT_SECONDS (36s per user requirement), call .play(), fade volume up to VOLUME over FADE_SECONDS
   safeSetVolume(0);
-  try {
-    audioElement.currentTime = audioConfig.START_AT_SECONDS; // 0:00
-  } catch (e) {}
+  const targetStart = audioConfig.START_AT_SECONDS || 0;
+  if (targetStart > 0 && (!audioElement.currentTime || audioElement.currentTime < 1)) {
+    if (audioElement.readyState >= 1) {
+      try {
+        audioElement.currentTime = targetStart;
+      } catch (e) {}
+    } else {
+      audioElement.addEventListener(
+        'loadedmetadata',
+        () => {
+          try {
+            audioElement.currentTime = targetStart;
+          } catch (e) {}
+        },
+        { once: true }
+      );
+    }
+  }
 
   const playPromise = audioElement.play();
   if (playPromise !== undefined) {
     playPromise
       .then(() => {
+        if (targetStart > 0 && audioElement.currentTime < targetStart - 1) {
+          try {
+            audioElement.currentTime = targetStart;
+          } catch (e) {}
+        }
         fadeInVolume(audioConfig.VOLUME, audioConfig.FADE_SECONDS);
       })
       .catch((err) => {
@@ -355,9 +375,10 @@ function startAudio() {
         if (err.name === 'NotSupportedError' || (audioElement && audioElement.error)) {
           handleAudioError(err);
         } else {
-          // Autoplay policy or gesture required
+          // Autoplay policy or gesture required before unmuted audio can play
           isPlaying = false;
           updateAllButtons();
+          setupInteractionListeners();
         }
       });
   }
@@ -549,7 +570,8 @@ function onFirstInteraction(e) {
     return;
   }
 
-  if (getStoredPreference() === 'on' && !isPlaying) {
+  const savedPref = getStoredPreference();
+  if (savedPref !== 'off' && !isPlaying) {
     startAudio();
   }
 }
@@ -670,16 +692,16 @@ export function initAudioController() {
     }
   }
 
-  // 4. Persistence handling:
-  // If user previously turned sound ON: wait for first interaction to start audio
+  // 4. Auto-start on website open:
+  // User requested: "auto start music when we open the website and music start from 36 sec"
   const savedPref = getStoredPreference();
-  if (savedPref === 'on') {
-    setupInteractionListeners();
-  } else {
-    // Sound is OFF by default; trigger tooltip logic on first visit
-    if (primaryNavBtn) {
-      setupTooltip(primaryNavBtn);
+  if (savedPref !== 'off') {
+    startAudio();
+    if (!isPlaying) {
+      setupInteractionListeners();
     }
+  } else if (primaryNavBtn) {
+    setupTooltip(primaryNavBtn);
   }
 
   // 5. Visibility change handling

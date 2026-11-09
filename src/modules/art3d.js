@@ -209,6 +209,17 @@ export function initArt3D(container, options = {}) {
   let inkRGB = [10, 10, 10];
   let signalRGB = [255, 75, 43];
 
+  // Pre-allocated arrays and object pools for zero-allocation 60fps rendering
+  const projected = [];
+  const b0 = [], b1 = [], b2 = [], b3 = [];
+  const nodeB0 = [];
+  const nodeB1 = [];
+  const nodeB2 = [];
+  const projRing = new Array(RING_SAMPLES);
+  for (let i = 0; i < RING_SAMPLES; i++) {
+    projRing[i] = { sx: 0, sy: 0 };
+  }
+
   function updateThemeColors() {
     try {
       const s = window.getComputedStyle(root);
@@ -343,7 +354,11 @@ export function initArt3D(container, options = {}) {
     const pulseFade = introComplete ? 1 : Math.max(0, Math.min(1, (introTime - 1.00) / 0.35));
 
     // Project nodes
-    const projected = new Array(nodes.length);
+    while (projected.length < nodes.length) {
+      projected.push({ sx: 0, sy: 0, z: 0, tz: 0, scale: 1, rawX: 0, rawY: 0, rawZ: 0 });
+    }
+    projected.length = nodes.length;
+
     for (let i = 0; i < nodes.length; i++) {
       const node = nodes[i];
       let scale = 1;
@@ -357,13 +372,24 @@ export function initArt3D(container, options = {}) {
       const rawZ = node.z * radius * scale;
       const pt = projectPoint(rawX, rawY, rawZ, cosY, sinY, cosX, sinX, fov, cx, cy);
       const tz = Math.max(0, Math.min(1, (radius - pt.z) / (2 * radius)));
-      projected[i] = { sx: pt.sx, sy: pt.sy, z: pt.z, tz, scale, rawX, rawY, rawZ };
+      const p = projected[i];
+      p.sx = pt.sx;
+      p.sy = pt.sy;
+      p.z = pt.z;
+      p.tz = tz;
+      p.scale = scale;
+      p.rawX = rawX;
+      p.rawY = rawY;
+      p.rawZ = rawZ;
     }
 
     // Edges (Batched into 4 depth buckets)
     if (edgeFade > 0.001) {
       ctx.lineWidth = 1;
-      const b0 = [], b1 = [], b2 = [], b3 = [];
+      b0.length = 0;
+      b1.length = 0;
+      b2.length = 0;
+      b3.length = 0;
 
       for (let i = 0; i < edges.length; i++) {
         const [u, v] = edges[i];
@@ -406,7 +432,6 @@ export function initArt3D(container, options = {}) {
       const ringRadius = radius * 1.34;
       const precess = wobbleTime * 0.08;
       const cosP = Math.cos(precess), sinP = Math.sin(precess);
-      const projRing = new Array(RING_SAMPLES);
 
       for (let i = 0; i < RING_SAMPLES; i++) {
         const p = ringPoints[i];
@@ -416,7 +441,8 @@ export function initArt3D(container, options = {}) {
         const rx1 = rx0 * cosP + rz0 * sinP;
         const rz1 = -rx0 * sinP + rz0 * cosP;
         const pt = projectPoint(rx1, ry0, rz1, cosY, sinY, cosX, sinX, fov, cx, cy);
-        projRing[i] = pt;
+        projRing[i].sx = pt.sx;
+        projRing[i].sy = pt.sy;
       }
 
       ctx.lineWidth = 1;
@@ -471,9 +497,9 @@ export function initArt3D(container, options = {}) {
     }
 
     // Nodes (Batched into 3 depth/size buckets: back, mid, front)
-    const nodeB0 = [];
-    const nodeB1 = [];
-    const nodeB2 = [];
+    nodeB0.length = 0;
+    nodeB1.length = 0;
+    nodeB2.length = 0;
 
     for (let k = 0; k < projected.length; k++) {
       const p = projected[k];

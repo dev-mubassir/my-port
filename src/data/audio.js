@@ -2,7 +2,10 @@
  * Audio tracks configuration for Mubassir Shah portfolio.
  * Discovers audio assets in /assets/audio/ and provides playback defaults.
  * 
- * Note: START_AT_SECONDS = 0. Music restarts from 0:00 and loops continuously.
+ * Requirements:
+ * - Auto-start music on website open.
+ * - Music starts from 36 seconds (START_AT_SECONDS: 36).
+ * - Continuous loop playback.
  */
 
 import track1Url from '../../assets/audio/track-1.mp3';
@@ -22,12 +25,14 @@ const discoveredTracks = Object.values(audioFiles)
   .filter(Boolean);
 
 export const audioConfig = {
-  START_AT_SECONDS: 0,
+  START_AT_SECONDS: 36,
+  LOOP_AT_SECONDS: 0,
   VOLUME: 0.35,
   FADE_SECONDS: 2,
   FADE_OUT_SECONDS: 0.6,
   STORAGE_KEY: 'mubassir_sound_enabled',
   TOOLTIP_STORAGE_KEY: 'mubassir_sound_tooltip_shown',
+  AUTO_START: true,
   tracks: discoveredTracks.length > 0 ? discoveredTracks : [track1Url]
 };
 

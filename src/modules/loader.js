@@ -40,7 +40,7 @@ export function initLoader(onComplete) {
       exitTl
         .to(preloader, {
           yPercent: -100,
-          duration: 0.85,
+          duration: 0.95,
           ease: 'power4.inOut'
         })
         .fromTo(
@@ -48,17 +48,18 @@ export function initLoader(onComplete) {
           { yPercent: 100 },
           {
             yPercent: -100,
-            duration: 0.95,
+            duration: 1.05,
             ease: 'power4.inOut'
           },
-          '-=0.75'
+          '-=0.85'
         );
     }
   });
 
+  // Smooth, slightly slower loading counter and word assembly (2.8s count-up + 0.35s rest)
   tl.to(state, {
     value: 100,
-    duration: 1.6,
+    duration: 2.8,
     ease: 'power2.inOut',
     onUpdate: () => {
       const current = Math.floor(state.value);
@@ -77,5 +78,5 @@ export function initLoader(onComplete) {
         wordEl.innerHTML = text.replace('.', '<span class="dot">.</span>');
       }
     }
-  });
+  }).to({}, { duration: 0.35 });
 }
