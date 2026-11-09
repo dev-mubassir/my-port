@@ -140,3 +140,44 @@
 .menu-social-links a:hover {
   color: var(--color-signal);
 }
+
+@media (max-width: 768px) {
+  #menu-overlay {
+    height: 100svh;
+    max-height: 100svh;
+    padding: calc(16px + env(safe-area-inset-top, 0px)) 20px calc(20px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .btn-menu-close {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .menu-nav {
+    margin: 16px 0;
+    gap: 8px;
+  }
+
+  .menu-nav-link {
+    font-size: clamp(28px, 7.5vw, 36px);
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .menu-footer {
+    padding-top: 14px;
+    gap: 12px;
+  }
+
+  .menu-social-links a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+}

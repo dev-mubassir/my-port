@@ -317,8 +317,48 @@
   color: var(--color-ink);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 900px) and (min-width: 769px) {
   .projects-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-section {
+    padding: 64px 20px;
+  }
+  .projects-headline {
+    font-size: clamp(2rem, 8vw, 3rem);
+    letter-spacing: -0.02em;
+    word-spacing: 0.1em;
+    margin-bottom: 32px;
+  }
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .project-card {
+    padding: 20px;
+  }
+  .project-card-media {
+    aspect-ratio: 16 / 10;
+    width: 100%;
+    margin-bottom: 16px;
+  }
+  .project-card-title {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+    letter-spacing: -0.02em;
+    gap: 8px;
+  }
+  .tech-tag {
+    font-size: 11px;
+    padding: 3px 6px;
+  }
+  .project-card-cta {
+    min-height: 48px;
+    padding: 8px 0;
+  }
+  .project-card-bottom {
+    padding-top: 12px;
   }
 }

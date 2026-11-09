@@ -305,12 +305,11 @@
 
       <h2 class="about-headline">
         <span>Shipping real AI, one</span>
-        <span class="rotator-container" data-words='["feature", "test", "release"]'>
+        <span class="rotator-container" data-words='["release", "test", "feature"]'>
           <span class="rotator-word-box">
-            <span class="rotator-word is-active">feature</span>
+            <span class="rotator-word is-active">release</span>
           </span>
         </span>
-        <span>at a time</span>
       </h2>
 
       <div class="about-grid">
@@ -384,7 +383,7 @@
       <div class="siffty-hero-row">
         <div class="siffty-title-group">
           <span class="siffty-badge">META APP REVIEW APPROVED · SEPT 2026</span>
-          <h2 class="siffty-headline">siffty<span class="dot">.</span></h2>
+          <h2 class="siffty-headline">Siffty<span class="dot">.</span></h2>
           <p class="siffty-intro-lead">
             An AI Instagram DM intelligence platform for Indian creators and businesses. Automatically classifies incoming messages, surfaces brand sponsorships, qualifies high-intent sales leads, and drafts replies.
           </p>
@@ -411,12 +410,12 @@
             How one message moves from Instagram to a classified lead, with automatic failover between AI providers.
           </p>
           <button type="button" class="btn-simulate-failure" data-magnetic>
-            Simulate primary model failure
+            SIMULATE CLOUD TIMEOUT
           </button>
         </div>
 
-        <!-- 3-Column Architecture SVG (under 15 KB, 0 filters, accessible) -->
-        <svg class="architecture-svg" viewBox="0 0 1140 460" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="svg-arch-title svg-arch-desc">
+        <!-- 3-Column Architecture SVG (Desktop >768px) -->
+        <svg class="architecture-svg desktop-only-diagram" viewBox="0 0 1140 460" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="svg-arch-title svg-arch-desc">
           <title id="svg-arch-title">Siffty Production Multi-Provider AI Architecture Flow</title>
           <desc id="svg-arch-desc">Three-stage flow: Receive (Instagram DM, Meta webhook, Express API), Think (AI Router, Primary Cloudflare Workers AI or fallback Gemini, Text generation gpt-oss-20b), and Store and deliver (Prisma PostgreSQL, Socket.io, Next.js dashboard, Auto-reply via Graph API).</desc>
 
@@ -525,6 +524,66 @@
             <rect x="830" y="365" width="270" height="54" rx="0" class="arch-node-box" />
             <text x="846" y="389" class="arch-text-title">Auto-reply through Graph API</text>
             <text x="846" y="405" class="arch-text-sub">Direct response dispatched to Instagram</text>
+          </g>
+        </svg>
+
+        <!-- Dedicated Vertical Architecture SVG (Mobile <=768px) -->
+        <svg class="architecture-svg-mobile mobile-only-diagram" viewBox="0 0 340 510" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="svg-arch-m-title svg-arch-m-desc">
+          <title id="svg-arch-m-title">Siffty Production AI Architecture (Mobile View)</title>
+          <desc id="svg-arch-m-desc">Vertical pipeline showing message ingestion, AI routing with failover, and dashboard dispatch.</desc>
+
+          <!-- Center vertical line -->
+          <line x1="170" y1="40" x2="170" y2="465" stroke="var(--color-ink-15)" stroke-width="2" />
+
+          <!-- Dynamic Active Path 1: Primary (Workers AI) -->
+          <path id="path-primary-mobile" d="M 170 40 L 170 120 L 170 195 L 170 355 L 170 465" class="arch-connector arch-connector--active" stroke="var(--color-signal)" stroke-width="2.5" />
+
+          <!-- Dynamic Active Path 2: Fallback (Gemini) -->
+          <path id="path-fallback-mobile" d="M 170 40 L 170 120 L 170 270 L 170 355 L 170 465" class="arch-connector" stroke="var(--color-signal)" stroke-width="2.5" />
+
+          <!-- Animated Packet Circle on Mobile -->
+          <circle id="active-packet-mobile" cx="170" cy="40" r="5" class="packet-circle" aria-hidden="true" />
+
+          <!-- Node 1: Client (Instagram DM) -->
+          <g id="node-m-client" class="arch-node" tabindex="0" role="button" aria-label="Instagram DM details">
+            <rect x="20" y="15" width="300" height="50" class="arch-node-box" />
+            <text x="36" y="37" class="arch-text-title" font-size="13">1. Client (Instagram DM)</text>
+            <text x="36" y="53" class="arch-text-sub" font-size="11">Inbound customer message via Graph API</text>
+          </g>
+
+          <!-- Node 2: Webhook & Express Gateway -->
+          <g id="node-m-webhook" class="arch-node" tabindex="0" role="button" aria-label="Meta Webhook details">
+            <rect x="20" y="95" width="300" height="50" class="arch-node-box" />
+            <text x="36" y="117" class="arch-text-title" font-size="13">2. Webhook & Express Gateway</text>
+            <text x="36" y="133" class="arch-text-sub" font-size="11">HMAC verification & account isolation</text>
+          </g>
+
+          <!-- Node 3: Primary Workers AI -->
+          <g id="node-m-cf" class="arch-node is-active" tabindex="0" role="button" aria-label="Workers AI details">
+            <rect x="20" y="170" width="300" height="56" class="arch-node-box" />
+            <text x="36" y="193" class="arch-text-title" font-size="13">3A. Primary: Workers AI (Llama 3.3)</text>
+            <text x="36" y="211" class="arch-text-sub" font-size="11">Fast edge classification (~430ms)</text>
+          </g>
+
+          <!-- Node 4: Fallback Gemini -->
+          <g id="node-m-gemini" class="arch-node" tabindex="0" role="button" aria-label="Fallback Gemini details">
+            <rect x="20" y="245" width="300" height="56" class="arch-node-box" />
+            <text x="36" y="268" class="arch-text-title" font-size="13">3B. Fallback: Gemini 2.5 Flash</text>
+            <text x="36" y="286" class="arch-text-sub" font-size="11">Automatic failover on edge timeout</text>
+          </g>
+
+          <!-- Node 5: Storage & DB -->
+          <g id="node-m-storage" class="arch-node" tabindex="0" role="button" aria-label="PostgreSQL details">
+            <rect x="20" y="330" width="300" height="50" class="arch-node-box" />
+            <text x="36" y="352" class="arch-text-title" font-size="13">4. PostgreSQL & Prisma Storage</text>
+            <text x="36" y="368" class="arch-text-sub" font-size="11">Persisted leads, drafts & thread state</text>
+          </g>
+
+          <!-- Node 6: Response & Auto-reply -->
+          <g id="node-m-response" class="arch-node" tabindex="0" role="button" aria-label="Next.js Dashboard details">
+            <rect x="20" y="410" width="300" height="50" class="arch-node-box" />
+            <text x="36" y="432" class="arch-text-title" font-size="13">5. Next.js Dashboard & Auto-Reply</text>
+            <text x="36" y="448" class="arch-text-sub" font-size="11">Live socket updates & Graph API reply</text>
           </g>
         </svg>
 
@@ -856,12 +915,12 @@
           <div class="philosophy-card">
             <span class="philosophy-num">01</span>
             <h4 class="philosophy-step-title">Build with AI Tools</h4>
-            <p class="philosophy-step-text">I leverage modern AI coding assistants and LLMs to compress full-stack development timelines from months down to weeks.</p>
+            <p class="philosophy-step-text">I use AI coding assistants to build faster, and I back every feature with automated tests.</p>
           </div>
           <div class="philosophy-card">
             <span class="philosophy-num">02</span>
             <h4 class="philosophy-step-title">Test Thoroughly</h4>
-            <p class="philosophy-step-text">Automated test suites validate every failover edge case, data isolation boundary, and webhook payload before deployment.</p>
+            <p class="philosophy-step-text">Five automated test suites cover failover, data isolation, auto-reply and chat delete.</p>
           </div>
           <div class="philosophy-card">
             <span class="philosophy-num">03</span>
@@ -957,8 +1016,8 @@
             </div>
             <div class="timeline-node"><div class="timeline-dot timeline-dot--upcoming"></div></div>
             <div class="timeline-content timeline-content--upcoming">
-              <h3 class="timeline-milestone-title">Siffty major update: AI agent workflow</h3>
-              <p class="timeline-milestone-desc">I am learning Agentic AI and I am adding an AI agent workflow to Siffty.</p>
+              <h3 class="timeline-milestone-title">B.Sc. Graduation & AI Engineer Roles</h3>
+              <p class="timeline-milestone-desc">Upcoming: B.Sc. graduation & open to full-time AI Engineer roles.</p>
             </div>
           </li>
         </ol>
@@ -969,7 +1028,7 @@
     <section id="contact" class="contact-section" data-nav-theme="dark" aria-label="Contact Mubassir Shah">
       <div class="section-header-row">
         <span class="section-index">006</span>
-        <span class="section-label">GET IN TOUCH</span>
+        <span class="section-label">CONTACT</span>
       </div>
 
       <h2 class="contact-headline">
@@ -1035,7 +1094,7 @@
                 <polyline points="7 10 12 15 17 10"></polyline>
                 <line x1="12" y1="15" x2="12" y2="3"></line>
               </svg>
-              <span>Download resume</span>
+              <span>DOWNLOAD RESUME</span>
             </a>
 
             <a href="mailto:mubassirrr2005@gmail.com?subject=AI%20Engineer%20opportunity%20-%20Mubassir%20Shah" class="btn-action-lg btn-action--signal" data-magnetic>
@@ -1043,7 +1102,7 @@
                 <rect x="2" y="4" width="20" height="16" rx="2"></rect>
                 <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
               </svg>
-              <span>Email me</span>
+              <span>EMAIL ME</span>
             </a>
 
             <button type="button" id="btn-copy-email" class="btn-action-lg btn-action--secondary" data-magnetic aria-label="Copy email to clipboard">
@@ -1051,15 +1110,15 @@
                 <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                 <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
               </svg>
-              <span id="copy-email-text">Copy email</span>
+              <span id="copy-email-text">COPY EMAIL</span>
             </button>
 
             <a href="https://linkedin.com/in/mubassir-shah" target="_blank" rel="noopener noreferrer" class="btn-action-lg btn-action--secondary" data-magnetic>
-              <span>LinkedIn ↗</span>
+              <span>LINKEDIN ↗</span>
             </a>
 
             <a href="https://github.com/dev-mubassir" target="_blank" rel="noopener noreferrer" class="btn-action-lg btn-action--secondary" data-magnetic>
-              <span>GitHub ↗</span>
+              <span>GITHUB ↗</span>
             </a>
           </div>
 
@@ -1129,8 +1188,6 @@
             <h4 class="footer-col-title">Project</h4>
             <ul class="footer-links">
               <li><a href="https://siffty.com" target="_blank" rel="noopener noreferrer" class="footer-link">Siffty (siffty.com) ↗</a></li>
-              <li><span class="footer-static-item">Meta App Review: Approved</span></li>
-              <li><span class="footer-static-item">Workers AI · Gemini Fallback</span></li>
               <li><a href="https://instagram.com/siffty.dev" target="_blank" rel="noopener noreferrer" class="footer-link">@siffty.dev ↗</a></li>
             </ul>
           </div>
@@ -1138,34 +1195,14 @@
 
         <!-- Footer Bottom Bar -->
         <div class="footer-bottom-bar">
-          <div class="footer-location-note">
-            Based in Lakhnadon, Madhya Pradesh, India. Available worldwide for remote and hybrid roles.
-          </div>
-
-          <div class="footer-clock-row">
-            <span class="live-indicator" aria-hidden="true"></span>
-            <span id="live-clock" class="footer-time">00:00:00 IST</span>
-          </div>
-
-          <div class="footer-meta-right">
-            <span class="footer-copy">© 2026 Mubassir Shah</span>
-            <button class="btn-back-to-top" aria-label="Scroll back to top" data-magnetic>
-              BACK TO TOP ↑
-            </button>
-          </div>
+          <span class="footer-copy">© 2026 Mubassir Shah</span>
+          <button class="btn-back-to-top" aria-label="Scroll back to top" data-magnetic>
+            BACK TO TOP ↑
+          </button>
         </div>
       </footer>
     </section>
   </main>
-
-  <!-- Mobile Floating Hire Pill (U09) -->
-  <a href="#contact" id="mobile-hire-pill" class="mobile-hire-pill" aria-label="Jump to contact section">
-    <span>HIRE ME</span>
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-      <line x1="7" y1="17" x2="17" y2="7"></line>
-      <polyline points="7 7 17 7 17 17"></polyline>
-    </svg>
-  </a>
 
   <!-- Main JavaScript Bootstrap -->
   <script type="module" src="src/main.js"></script>

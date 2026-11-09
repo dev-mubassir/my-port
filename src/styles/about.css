@@ -166,7 +166,64 @@
   line-height: 1.55;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 768px) {
+  .about-section {
+    padding: 64px 20px;
+  }
+  .about-headline {
+    font-size: clamp(1.75rem, 8vw, 2.5rem);
+    letter-spacing: -0.02em;
+    word-spacing: 0.1em;
+    margin-bottom: 32px;
+  }
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .about-bio {
+    gap: 16px;
+  }
+  .about-bio-lead, .about-bio-p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .fact-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+    padding: 12px 0;
+  }
+  .fact-label {
+    font-size: 11px;
+  }
+  .fact-value {
+    font-size: 13px;
+  }
+  .about-proof-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 32px;
+    padding-top: 24px;
+  }
+  .proof-card {
+    padding: 16px 12px;
+    min-width: 0;
+  }
+  .proof-num {
+    font-size: 28px;
+    margin-bottom: 6px;
+  }
+  .proof-title {
+    font-size: 0.875rem;
+    line-height: 1.25;
+    margin-bottom: 4px;
+  }
+  .proof-text {
+    font-size: 11px;
+    line-height: 1.4;
+  }
+}
+
+@media (max-width: 900px) and (min-width: 769px) {
   .about-grid {
     grid-template-columns: 1fr;
     gap: 40px;
@@ -174,15 +231,5 @@
   .about-proof-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
-  }
-}
-
-@media (max-width: 480px) {
-  .about-proof-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-  }
-  .proof-card {
-    padding: 16px;
   }
 }

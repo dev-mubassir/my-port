@@ -102,41 +102,6 @@ export function initContact() {
     });
   }
 
-  // Mobile Floating "HIRE ME" Pill
-  const mobilePill = document.getElementById('mobile-hire-pill');
-  if (mobilePill) {
-    const heroSection = document.getElementById('hero');
-    const menuOverlay = document.getElementById('menu-overlay');
-
-    function updatePillVisibility() {
-      if (window.innerWidth > 768) {
-        mobilePill.classList.remove('is-visible');
-        return;
-      }
-
-      const scrollY = window.scrollY;
-      const heroHeight = heroSection ? heroSection.offsetHeight : 600;
-      const contactRect = section.getBoundingClientRect();
-      const isContactInView = contactRect.top < window.innerHeight && contactRect.bottom > 0;
-      const isMenuOpen = menuOverlay && menuOverlay.classList.contains('is-open');
-
-      if (scrollY > heroHeight * 0.7 && !isContactInView && !isMenuOpen) {
-        mobilePill.classList.add('is-visible');
-      } else {
-        mobilePill.classList.remove('is-visible');
-      }
-    }
-
-    window.addEventListener('scroll', updatePillVisibility, { passive: true });
-    window.addEventListener('resize', updatePillVisibility, { passive: true });
-
-    mobilePill.addEventListener('click', e => {
-      e.preventDefault();
-      section.scrollIntoView({ behavior: 'smooth' });
-    });
-
-    updatePillVisibility();
-  }
 
   // Scroll animations
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

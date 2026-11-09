@@ -33,7 +33,7 @@
   - Card numbers 01 to 04 with reveal animation.
   - Timeline: replace "2024 Shipped CityKirana & Sky Jump" with "Earlier: built CityKirana, a vanilla JavaScript grocery delivery site for Lakhnadon." (no year).
 
-- [ ] F05: MOBILE RE-OPTIMISATION (whole site, top to bottom)
+- [x] F05: MOBILE RE-OPTIMISATION (whole site, top to bottom)
   - Global: headline letter-spacing no tighter than -0.02em, word-spacing ~0.1em on large headlines.
   - Zero horizontal scroll anywhere (Playwright check: bounding rect right <= window.innerWidth + 1px).
   - Remove floating "HIRE ME" pill on mobile (HIRE ME is in nav).

@@ -134,14 +134,68 @@
   line-height: 1.6;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 900px) and (min-width: 769px) {
   .philosophy-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 768px) {
+  .skills-section {
+    padding: 64px 0;
+  }
+  .skills-header-container {
+    padding: 0 20px;
+    margin-bottom: 20px;
+  }
+  .skills-header-container .section-header-row {
+    margin-bottom: 16px;
+  }
+  .skills-headline {
+    font-size: clamp(1.85rem, 8vw, 2.75rem);
+    letter-spacing: -0.02em;
+    word-spacing: 0.1em;
+  }
+  .marquee-wrapper {
+    margin-bottom: 36px;
+    gap: 8px;
+  }
+  .marquee-row {
+    height: 44px;
+    align-items: center;
+  }
+  .marquee-item {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    gap: 16px;
+  }
+  .philosophy-container {
+    padding: 0 20px;
+  }
+  .philosophy-title {
+    font-size: 1.25rem;
+    margin-bottom: 24px;
+  }
   .philosophy-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .philosophy-card {
+    padding-top: 14px;
+    gap: 8px;
+  }
+  .philosophy-num {
+    font-size: 24px;
+  }
+  .philosophy-step-title {
+    font-family: var(--font-headline);
+    font-size: 18px;
+    font-weight: 800;
+  }
+  .philosophy-step-text {
+    font-size: 14px;
+    line-height: 1.5;
   }
 }
