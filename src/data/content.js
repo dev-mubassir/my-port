@@ -147,32 +147,32 @@ export const portfolioData = {
       imageMobile: "assets/projects/dealradar-800.webp"
     },
     {
-      id: "citykirana",
+      id: "aegischat",
       num: "03",
+      title: "AegisChat",
+      tagline: "Zero-Knowledge Hardware-Backed Messenger",
+      category: "Privacy & Security / Mobile",
+      year: "2025",
+      tech: ["Flutter", "FastAPI", "Python", "AES-256-GCM", "WebSockets"],
+      desc: "Zero-knowledge, hardware-backed end-to-end encrypted mobile messaging system. Preserves message confidentiality with on-device AES-256-GCM encryption and a FastAPI opaque ciphertext relay.",
+      link: "https://github.com/dev-mubassir/AegisChat",
+      status: "Prototype & Architecture",
+      image: "assets/projects/aegischat-1600.webp",
+      imageMobile: "assets/projects/aegischat-800.webp"
+    },
+    {
+      id: "citykirana",
+      num: "04",
       title: "CityKirana",
       tagline: "Hyperlocal Grocery Delivery Platform",
       category: "Web Commerce",
-      year: "2024",
+      year: "Earlier",
       tech: ["Vanilla JavaScript", "HTML5", "CSS3", "Local Storage"],
-      desc: "Lightweight, zero-framework eCommerce web application tailored for local grocery and essentials ordering in Lakhnadon. Fast loading on 3G connections.",
+      desc: "Lightweight, zero-framework eCommerce web application engineered for local grocery delivery in Lakhnadon. Fast loading on 3G connections.",
       link: "https://github.com/dev-mubassir",
       status: "Deployed Locally",
       image: "assets/projects/citykirana-1600.webp",
       imageMobile: "assets/projects/citykirana-800.webp"
-    },
-    {
-      id: "skyjump",
-      num: "04",
-      title: "Sky Jump",
-      tagline: "HTML5 Canvas Arcade Experience",
-      category: "Game Development",
-      year: "2023",
-      tech: ["HTML5 Canvas", "JavaScript ES6", "Web Audio API"],
-      desc: "Physics-based vertical arcade jumper built purely in vanilla JS and canvas. Features responsive collision physics, procedural platform generation, and high-score tracking.",
-      link: "https://github.com/dev-mubassir",
-      status: "Complete Playable Build",
-      image: "assets/projects/skyjump-1600.webp",
-      imageMobile: "assets/projects/skyjump-800.webp"
     }
   ],
 
@@ -224,9 +224,9 @@ export const portfolioData = {
         desc: "Enrolled at Govt. Swami Vivekanand College in Lakhnadon. Immersed in foundational algorithms, data structures, and Python programming."
       },
       {
-        year: "2024",
-        title: "Full-Stack Development & Local Solutions",
-        desc: "Engineered CityKirana and Sky Jump, exploring client-side performance, state management, and real-time canvas rendering."
+        year: "Earlier",
+        title: "CityKirana",
+        desc: "Earlier: built CityKirana, a vanilla JavaScript grocery delivery site for Lakhnadon."
       },
       {
         year: "2025",

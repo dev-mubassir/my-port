@@ -24,7 +24,7 @@
   - Link: image and "VISIT LIVE SITE" button open https://siffty.com in new tab. Add "LIVE" tag with slowly pulsing orange dot. Remove "Illustrative preview" caption.
   - Carousel with dots if multiple screenshots; fallback if none.
 
-- [ ] F04: PROJECTS: CHANGE THE LIST
+- [x] F04: PROJECTS: CHANGE THE LIST
   - Final order: 01 Siffty, 02 DealRadar, 03 AegisChat (new), 04 CityKirana.
   - Remove Sky Jump completely: card, timeline, About, skills, README, content.js, JSON-LD, meta tags, and image files.
   - AegisChat: read repo `dev-mubassir/AegisChat`, write 2-sentence description and 3-5 stack tags based strictly on repo facts.
