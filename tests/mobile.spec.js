@@ -49,24 +49,19 @@ test.describe('Mobile Viewports & Responsiveness Suite', () => {
     await page.screenshot({ path: 'screenshots/mobile-390.png', fullPage: false });
   });
 
-  test('Mobile floating HIRE ME pill behavior on 390px', async ({ page }) => {
+  test('Mobile navbar HIRE ME button and no floating pill on 390px', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto('/');
     await page.waitForTimeout(2200);
 
-    const pill = page.locator('#mobile-hire-pill');
+    // Floating pill was removed as per F05
+    const floatingPill = page.locator('#mobile-hire-pill');
+    await expect(floatingPill).toHaveCount(0);
 
-    // Scroll past hero
-    await page.evaluate(() => window.scrollTo(0, 1000));
-    await page.waitForTimeout(300);
-    await expect(pill).toHaveClass(/is-visible/);
-
-    // Scroll into contact section
-    await page.evaluate(() => {
-      document.querySelector('#contact').scrollIntoView();
-    });
-    await page.waitForTimeout(300);
-    await expect(pill).not.toHaveClass(/is-visible/);
+    // Mobile nav HIRE ME button exists and links to #contact
+    const navHire = page.locator('.btn-nav-hire');
+    await expect(navHire).toBeVisible();
+    await expect(navHire).toHaveAttribute('href', '#contact');
   });
 });
 

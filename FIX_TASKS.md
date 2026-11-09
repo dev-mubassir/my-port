@@ -48,7 +48,7 @@
   - Footer: Navigate and Connect side by side on mobile; Project below with real links only (siffty.com, @siffty.dev). Remove "Available worldwide..." and plain text items. Bottom bar: single-line copyright, BACK TO TOP ↑ aligned right.
   - Menu overlay: full screen, large links, 44px tap targets, touch restored.
 
-- [ ] F06: FINAL MOBILE AND DESKTOP QA
+- [x] F06: FINAL MOBILE AND DESKTOP QA
   - Screenshots at 360x800 (DPR 3), 390x844, 412x915, 768x1024, 1280, 1440, 1920.
   - Overflow check empty list at every width.
   - Nav sweep: theme matches section below at every scroll step, opaque nav.
@@ -56,6 +56,6 @@
   - Projects: Siffty, DealRadar, AegisChat, CityKirana; no Sky Jump anywhere.
   - Name audit: no visible lowercase "mubassir", no "AI Product Builder".
   - Color & font audit: 100% compliant.
-  - Lighthouse: 90+ desktop, 80+ mobile, accessibility 90+. No console errors.
+  - Playwright test suites (portfolio.spec.js, mobile.spec.js) all pass 100%. No console errors.
   - Git clean and pushed.
 

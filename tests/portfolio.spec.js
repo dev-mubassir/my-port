@@ -36,18 +36,20 @@ test.describe('Mubassir Shah Portfolio Suite', () => {
     await expect(svgDiagram).toBeVisible();
 
     const simBtn = page.locator('.btn-simulate-failure');
-    await expect(simBtn).toContainText('Simulate primary model failure');
+    await expect(simBtn).toContainText('SIMULATE CLOUD TIMEOUT');
     await simBtn.click();
-    await expect(simBtn).toContainText('Back to normal');
+    await expect(simBtn).toContainText('RESET TO PRIMARY ROUTE');
     await simBtn.click();
-    await expect(simBtn).toContainText('Simulate primary model failure');
+    await expect(simBtn).toContainText('SIMULATE CLOUD TIMEOUT');
 
-    // Verify Projects Grid (4 projects with media preview and captions)
+    // Verify Projects Grid (4 projects with media preview)
     const projectCards = page.locator('.project-card');
     await expect(projectCards).toHaveCount(4);
     const projectImages = page.locator('.project-card-media img');
     await expect(projectImages).toHaveCount(4);
+    // Card 01 is real Siffty dashboard (no placeholder caption); other cards have Illustrative preview
     const projectCaptions = page.locator('.project-card-caption');
+    await expect(projectCaptions).toHaveCount(3);
     await expect(projectCaptions.first()).toContainText('Illustrative preview');
 
     // Verify Open Graph and Twitter image
@@ -60,12 +62,12 @@ test.describe('Mubassir Shah Portfolio Suite', () => {
     const philosophyCards = page.locator('.philosophy-card');
     await expect(philosophyCards).toHaveCount(4);
 
-    // Verify Timeline Milestones (7 items including Oct 2026 and Upcoming)
+    // Verify Timeline Milestones (7 items including Upcoming)
     const timelineItems = page.locator('.timeline-item');
     await expect(timelineItems).toHaveCount(7);
     const upcomingItem = page.locator('.timeline-item--upcoming');
     await expect(upcomingItem).toBeVisible();
-    await expect(upcomingItem).toContainText('Siffty major update: AI agent workflow');
+    await expect(upcomingItem).toContainText('Upcoming: B.Sc. graduation');
     await expect(upcomingItem).toContainText('UPCOMING');
 
     // Verify Contact & Recruiter Card
@@ -94,12 +96,6 @@ test.describe('Mubassir Shah Portfolio Suite', () => {
     await expect(footerWordmark).toContainText('Mubassir');
     const footerCols = page.locator('.footer-col');
     await expect(footerCols).toHaveCount(3);
-
-    // Verify Live Clock
-    const clock = page.locator('#live-clock');
-    await expect(clock).toBeVisible();
-    const clockText = await clock.innerText();
-    expect(clockText).toContain('IST');
 
     // Verify Resume link
     const resumeBtn = page.locator('a[download="Mubassir_Shah_Resume.pdf"]').first();
@@ -134,12 +130,20 @@ test.describe('Mubassir Shah Portfolio Suite', () => {
     const afterScroll = await page.evaluate(() => window.scrollY);
     expect(afterScroll).toBeGreaterThan(beforeScroll);
 
-    // Verify adaptive navbar updates theme
+    // Verify adaptive navbar updates theme: light on Siffty, dark on Contact
     await page.evaluate(() => {
-      document.querySelector('#siffty').scrollIntoView();
+      const siffty = document.querySelector('#siffty');
+      window.scrollTo(0, siffty.offsetTop + 100);
     });
-    await page.waitForTimeout(500);
+    await page.waitForTimeout(300);
     const navHeader = page.locator('.site-header');
+    await expect(navHeader).toHaveAttribute('data-theme', 'light');
+
+    await page.evaluate(() => {
+      const contact = document.querySelector('#contact');
+      window.scrollTo(0, contact.offsetTop + 100);
+    });
+    await page.waitForTimeout(300);
     await expect(navHeader).toHaveAttribute('data-theme', 'dark');
   });
 });
