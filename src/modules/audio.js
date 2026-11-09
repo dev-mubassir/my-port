@@ -324,6 +324,9 @@ function startAudio() {
       audioElement.preload = 'auto';
       currentTrackIndex = 0;
       audioElement.src = tracks[currentTrackIndex];
+      if (typeof window !== 'undefined') {
+        window._mubassirAudio = audioElement;
+      }
 
       audioElement.addEventListener('ended', handleTrackEnded);
       audioElement.addEventListener('error', handleAudioError);

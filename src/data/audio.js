@@ -5,9 +5,11 @@
  * Note: START_AT_SECONDS = 0. Music restarts from 0:00 and loops continuously.
  */
 
-// Discover audio files in assets/audio/ using Vite's glob import
+import track1Url from '../../assets/audio/track-1.mp3';
+
+// Discover audio files in assets/audio/ using Vite's relative glob import
 const audioFiles = typeof import.meta.glob === 'function'
-  ? import.meta.glob('/assets/audio/*.*', { eager: true, query: '?url' })
+  ? import.meta.glob('../../assets/audio/*.*', { eager: true, import: 'default' })
   : {};
 
 // Extract URLs from discovered audio modules
@@ -19,9 +21,6 @@ const discoveredTracks = Object.values(audioFiles)
   })
   .filter(Boolean);
 
-// Default fallback track URL in case glob returned empty or outside Vite
-const fallbackTracks = ['assets/audio/track-1.mp3'];
-
 export const audioConfig = {
   START_AT_SECONDS: 0,
   VOLUME: 0.35,
@@ -29,8 +28,8 @@ export const audioConfig = {
   FADE_OUT_SECONDS: 0.6,
   STORAGE_KEY: 'mubassir_sound_enabled',
   TOOLTIP_STORAGE_KEY: 'mubassir_sound_tooltip_shown',
-  tracks: discoveredTracks.length > 0 ? discoveredTracks : fallbackTracks
+  tracks: discoveredTracks.length > 0 ? discoveredTracks : [track1Url]
 };
 
-export { audioFiles };
+export { audioFiles, track1Url };
 export default audioConfig;

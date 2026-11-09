@@ -360,24 +360,48 @@ export function initArt3D(container, options = {}) {
       projected[i] = { sx: pt.sx, sy: pt.sy, z: pt.z, tz, scale, rawX, rawY, rawZ };
     }
 
-    // Edges
+    // Edges (Batched into 4 depth buckets)
     if (edgeFade > 0.001) {
       ctx.lineWidth = 1;
+      const b0 = [], b1 = [], b2 = [], b3 = [];
+
       for (let i = 0; i < edges.length; i++) {
         const [u, v] = edges[i];
         const p1 = projected[u];
         const p2 = projected[v];
         const tz = Math.max(0, Math.min(1, (radius - (p1.z + p2.z) * 0.5) / (2 * radius)));
-        const alpha = (0.08 + 0.42 * tz) * edgeFade;
-        ctx.strokeStyle = `rgba(${inkRGB[0]}, ${inkRGB[1]}, ${inkRGB[2]}, ${alpha})`;
+        if (tz < 0.25) {
+          b0.push(p1.sx, p1.sy, p2.sx, p2.sy);
+        } else if (tz < 0.5) {
+          b1.push(p1.sx, p1.sy, p2.sx, p2.sy);
+        } else if (tz < 0.75) {
+          b2.push(p1.sx, p1.sy, p2.sx, p2.sy);
+        } else {
+          b3.push(p1.sx, p1.sy, p2.sx, p2.sy);
+        }
+      }
+
+      const buckets = [
+        { data: b0, alpha: (0.08 + 0.42 * 0.12) * edgeFade },
+        { data: b1, alpha: (0.08 + 0.42 * 0.37) * edgeFade },
+        { data: b2, alpha: (0.08 + 0.42 * 0.62) * edgeFade },
+        { data: b3, alpha: (0.08 + 0.42 * 0.88) * edgeFade }
+      ];
+
+      for (let b = 0; b < buckets.length; b++) {
+        const d = buckets[b].data;
+        if (d.length === 0) continue;
+        ctx.strokeStyle = `rgba(10, 10, 10, ${buckets[b].alpha})`;
         ctx.beginPath();
-        ctx.moveTo(p1.sx, p1.sy);
-        ctx.lineTo(p2.sx, p2.sy);
+        for (let j = 0; j < d.length; j += 4) {
+          ctx.moveTo(d[j], d[j + 1]);
+          ctx.lineTo(d[j + 2], d[j + 3]);
+        }
         ctx.stroke();
       }
     }
 
-    // Orbit ring
+    // Orbit ring (Single batched stroke)
     if (ringFade > 0.001) {
       const ringRadius = radius * 1.34;
       const precess = wobbleTime * 0.08;
@@ -392,21 +416,18 @@ export function initArt3D(container, options = {}) {
         const rx1 = rx0 * cosP + rz0 * sinP;
         const rz1 = -rx0 * sinP + rz0 * cosP;
         const pt = projectPoint(rx1, ry0, rz1, cosY, sinY, cosX, sinX, fov, cx, cy);
-        const tz = Math.max(0, Math.min(1, (ringRadius - pt.z) / (2 * ringRadius)));
-        projRing[i] = { sx: pt.sx, sy: pt.sy, tz };
+        projRing[i] = pt;
       }
 
       ctx.lineWidth = 1;
-      for (let i = 0; i < RING_SAMPLES; i++) {
-        const p1 = projRing[i];
-        const p2 = projRing[(i + 1) % RING_SAMPLES];
-        const alpha = (0.18 + 0.67 * ((p1.tz + p2.tz) * 0.5)) * ringFade;
-        ctx.strokeStyle = `rgba(${signalRGB[0]}, ${signalRGB[1]}, ${signalRGB[2]}, ${alpha})`;
-        ctx.beginPath();
-        ctx.moveTo(p1.sx, p1.sy);
-        ctx.lineTo(p2.sx, p2.sy);
-        ctx.stroke();
+      ctx.strokeStyle = `rgba(255, 75, 43, ${0.55 * ringFade})`;
+      ctx.beginPath();
+      ctx.moveTo(projRing[0].sx, projRing[0].sy);
+      for (let i = 1; i < RING_SAMPLES; i++) {
+        ctx.lineTo(projRing[i].sx, projRing[i].sy);
       }
+      ctx.closePath();
+      ctx.stroke();
     }
 
     // Pulses
@@ -436,31 +457,51 @@ export function initArt3D(container, options = {}) {
         const dotR = 1.2 + 1.6 * tzNorm;
 
         ctx.lineWidth = 1.5;
-        ctx.strokeStyle = `rgba(${signalRGB[0]}, ${signalRGB[1]}, ${signalRGB[2]}, ${alpha * 0.75})`;
+        ctx.strokeStyle = `rgba(255, 75, 43, ${alpha * 0.75})`;
         ctx.beginPath();
         ctx.moveTo(ptTail.sx, ptTail.sy);
         ctx.lineTo(ptHead.sx, ptHead.sy);
         ctx.stroke();
 
-        ctx.fillStyle = `rgba(${signalRGB[0]}, ${signalRGB[1]}, ${signalRGB[2]}, ${alpha})`;
+        ctx.fillStyle = `rgba(255, 75, 43, ${alpha})`;
         ctx.beginPath();
         ctx.arc(ptHead.sx, ptHead.sy, dotR, 0, Math.PI * 2);
         ctx.fill();
       }
     }
 
-    // Nodes (depth sorted back to front)
-    const sorted = new Array(projected.length);
-    for (let i = 0; i < projected.length; i++) sorted[i] = i;
-    sorted.sort((a, b) => projected[b].z - projected[a].z);
+    // Nodes (Batched into 3 depth/size buckets: back, mid, front)
+    const nodeB0 = [];
+    const nodeB1 = [];
+    const nodeB2 = [];
 
-    for (let k = 0; k < sorted.length; k++) {
-      const p = projected[sorted[k]];
-      const r = 1.0 + 1.8 * p.tz;
-      const alpha = (0.15 + 0.55 * p.tz) * p.scale;
-      ctx.fillStyle = `rgba(${inkRGB[0]}, ${inkRGB[1]}, ${inkRGB[2]}, ${alpha})`;
+    for (let k = 0; k < projected.length; k++) {
+      const p = projected[k];
+      if (p.tz < 0.33) {
+        nodeB0.push(p);
+      } else if (p.tz < 0.66) {
+        nodeB1.push(p);
+      } else {
+        nodeB2.push(p);
+      }
+    }
+
+    const nodeBuckets = [
+      { list: nodeB0, r: 1.2, alpha: 0.22 },
+      { list: nodeB1, r: 1.8, alpha: 0.40 },
+      { list: nodeB2, r: 2.6, alpha: 0.65 }
+    ];
+
+    for (let b = 0; b < nodeBuckets.length; b++) {
+      const nb = nodeBuckets[b];
+      if (nb.list.length === 0) continue;
+      ctx.fillStyle = `rgba(10, 10, 10, ${nb.alpha})`;
       ctx.beginPath();
-      ctx.arc(p.sx, p.sy, r, 0, Math.PI * 2);
+      for (let j = 0; j < nb.list.length; j++) {
+        const p = nb.list[j];
+        ctx.moveTo(p.sx + nb.r, p.sy);
+        ctx.arc(p.sx, p.sy, nb.r, 0, Math.PI * 2);
+      }
       ctx.fill();
     }
   }
