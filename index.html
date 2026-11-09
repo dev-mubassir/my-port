@@ -77,6 +77,9 @@
   <link rel="stylesheet" href="src/styles/skills.css">
   <link rel="stylesheet" href="src/styles/timeline.css">
   <link rel="stylesheet" href="src/styles/contact.css">
+  <link rel="stylesheet" href="src/styles/art3d.css">
+  <link rel="stylesheet" href="src/styles/about-anim.css">
+  <link rel="stylesheet" href="src/styles/sound-toggle.css">
 </head>
 <body>
 
@@ -147,6 +150,18 @@
       </a>
     </nav>
 
+    <div class="menu-sound-row">
+      <span class="menu-sound-label">SOUND AMBIENCE</span>
+      <button id="btn-sound-toggle-menu" class="btn-sound-toggle btn-sound-toggle--menu" aria-label="Toggle background music" aria-pressed="false">
+        <span class="equalizer-icon" aria-hidden="true">
+          <span class="sound-bar sound-bar--1"></span>
+          <span class="sound-bar sound-bar--2"></span>
+          <span class="sound-bar sound-bar--3"></span>
+          <span class="sound-bar sound-bar--4"></span>
+        </span>
+      </button>
+    </div>
+
     <div class="menu-footer">
       <div class="menu-meta-col">
         <span class="micro-text micro-text--muted">LOCATION</span>
@@ -187,6 +202,15 @@
             <a href="mailto:mubassirrr2005@gmail.com" class="dropdown-item" role="menuitem">EMAIL</a>
           </div>
         </div>
+
+        <button id="btn-sound-toggle-nav" class="btn-sound-toggle btn-sound-toggle--nav hide-on-compact" aria-label="Toggle background music" aria-pressed="false" data-magnetic>
+          <span class="equalizer-icon" aria-hidden="true">
+            <span class="sound-bar sound-bar--1"></span>
+            <span class="sound-bar sound-bar--2"></span>
+            <span class="sound-bar sound-bar--3"></span>
+            <span class="sound-bar sound-bar--4"></span>
+          </span>
+        </button>
 
         <a href="#contact" class="btn-nav-hire" data-magnetic>HIRE ME</a>
 
@@ -313,6 +337,9 @@
       </h2>
 
       <div class="about-grid">
+        <!-- 3D Art Piece Container (wireframe Fibonacci neural map) -->
+        <div class="about-art-container" id="about-art3d" aria-hidden="true"></div>
+
         <div class="about-bio">
           <p class="about-bio-lead">
             I design, build and ship AI-powered software. My main project is Siffty, an AI platform that turns Instagram DMs into organised leads and replies. I built it in under six months and it was approved by Meta.

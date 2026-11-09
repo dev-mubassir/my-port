@@ -13,6 +13,7 @@ import { initSkills } from './modules/skills.js';
 import { initTimeline } from './modules/timeline.js';
 import { initContact } from './modules/contact.js';
 import { initTextScramble } from './modules/scramble.js';
+import { initAudioController } from './modules/audio.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize Smooth Scrolling & Progress
@@ -24,6 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize Rotators & Scramblers
   initRotators();
   initTextScramble();
+
+  // Initialize Audio & Sound Controller
+  initAudioController();
 
   // Initialize Full-Screen Menu Overlay & Adaptive Nav
   initMenu();
