@@ -130,13 +130,20 @@ test.describe('Mubassir Shah Portfolio Suite', () => {
     const afterScroll = await page.evaluate(() => window.scrollY);
     expect(afterScroll).toBeGreaterThan(beforeScroll);
 
-    // Verify adaptive navbar updates theme: light on Siffty, dark on Contact
+    // Verify adaptive navbar updates theme: dark on Siffty, light on Projects, dark on Contact
     await page.evaluate(() => {
       const siffty = document.querySelector('#siffty');
       window.scrollTo(0, siffty.offsetTop + 100);
     });
     await page.waitForTimeout(300);
     const navHeader = page.locator('.site-header');
+    await expect(navHeader).toHaveAttribute('data-theme', 'dark');
+
+    await page.evaluate(() => {
+      const projects = document.querySelector('#projects');
+      window.scrollTo(0, projects.offsetTop + 100);
+    });
+    await page.waitForTimeout(300);
     await expect(navHeader).toHaveAttribute('data-theme', 'light');
 
     await page.evaluate(() => {

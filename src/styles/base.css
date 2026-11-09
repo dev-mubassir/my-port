@@ -55,6 +55,24 @@ section, .section-header-row {
   scroll-margin-top: var(--nav-height);
 }
 
+/* Dark Theme Section Utility (002 Siffty, 006 Contact) */
+.section--dark {
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+}
+
+.section--dark .section-header-row {
+  border-bottom-color: var(--color-paper-20);
+}
+
+.section--dark .section-index {
+  color: var(--color-signal);
+}
+
+.section--dark .section-label {
+  color: var(--color-paper-60);
+}
+
 body {
   min-height: 100vh;
   background-color: var(--color-paper);
