@@ -20,7 +20,7 @@ playwright-report/
 test-results/
 screenshots/
 ss/
-assets/real/unredacted/
+assets/real/
 
 # Python virtual environment or temporary cache if any local tooling ran
 __pycache__/

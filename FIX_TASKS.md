@@ -17,7 +17,7 @@
   - Set scroll-padding-top and scroll-margin-top to nav height.
   - Playwright scroll sweep every 150px at 1440px and 360px: verify nav theme matches background under nav.
 
-- [ ] F03: PROJECTS: REAL SIFFTY DASHBOARD, LINKED TO THE LIVE SITE
+- [x] F03: PROJECTS: REAL SIFFTY DASHBOARD, LINKED TO THE LIVE SITE
   - Save uploaded Siffty dashboard to `assets/real/siffty/`.
   - Privacy blur: blur other people's names, handles, profile pictures, message text, email, phone numbers with sharp. Keep interface and metrics readable.
   - Optimize to WebP at 1600px and 800px (<150KB each), with width/height, srcset, lazy loading, alt "Siffty dashboard".
