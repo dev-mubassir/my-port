@@ -1,0 +1,31 @@
+name: Keep Alive Instance
+
+on:
+  schedule:
+    # Runs every 7 minutes to keep free-tier instances warm (sleeps after 15 mins of inactivity)
+    - cron: '*/7 * * * *'
+  workflow_dispatch: # Allows manual trigger from GitHub Actions tab
+
+jobs:
+  ping:
+    name: Ping Keep-Alive Target
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Instance
+        run: |
+          TARGET_URL="${{ secrets.SITE_URL || process.env.TARGET_URL || 'https://gift-friend.vercel.app' }}"
+          echo "Keep-alive ping triggered at $(date -u)"
+          echo "Target primary URL: $TARGET_URL"
+          
+          # Ping primary target
+          STATUS=$(curl -s -o /dev/null -w "%{http_code}" -m 15 -L "$TARGET_URL" || echo "ERR")
+          echo "Status: $STATUS"
+
+          # Ping complementary project endpoints
+          EXTRA_TARGETS=("https://omeditor.in" "https://siffty.com")
+          for URL in "${EXTRA_TARGETS[@]}"; do
+            EXTRA_STATUS=$(curl -s -o /dev/null -w "%{http_code}" -m 15 -L "$URL" || echo "ERR")
+            echo "Keep-alive check for $URL: $EXTRA_STATUS"
+          done
+          
+          echo "Keep-alive job finished successfully! ✅"
