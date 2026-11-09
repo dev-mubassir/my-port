@@ -49,6 +49,7 @@ export function initRotators() {
 
       // Measure target width
       nextSpan.style.opacity = '0';
+      nextSpan.style.visibility = 'hidden';
       nextSpan.style.position = 'absolute';
       const targetWidth = nextSpan.offsetWidth;
 
@@ -63,13 +64,14 @@ export function initRotators() {
       const tl = gsap.timeline({
         onComplete: () => {
           activeSpan.textContent = words[nextIndex];
-          gsap.set(activeSpan, { rotateX: 0, opacity: 1 });
-          gsap.set(nextSpan, { rotateX: -90, opacity: 0 });
+          gsap.set(activeSpan, { rotateX: 0, opacity: 1, visibility: 'visible' });
+          gsap.set(nextSpan, { rotateX: -90, opacity: 0, visibility: 'hidden' });
           currentIndex = nextIndex;
         }
       });
 
-      tl.to(activeSpan, {
+      tl.set(nextSpan, { visibility: 'visible' })
+      .to(activeSpan, {
         rotateX: 90,
         opacity: 0,
         duration: 0.42,

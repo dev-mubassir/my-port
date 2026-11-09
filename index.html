@@ -233,19 +233,7 @@
       </div>
 
       <!-- Horizontal Signal Orange Band Crossing Viewport -->
-      <div class="hero-orange-band" aria-hidden="true">
-        <!-- Orange Tint Overlap Duplicate Layer (mix-blend-mode multiply) -->
-        <div class="hero-band-tint">
-          <img 
-            src="assets/mubassir-new-cutout.webp" 
-            alt="" 
-            class="hero-band-photo-clone" 
-            loading="eager" 
-            decoding="async" 
-            aria-hidden="true"
-          >
-        </div>
-      </div>
+      <div class="hero-orange-band" aria-hidden="true"></div>
 
       <!-- Black Square Button with Downward Arrow at Bottom-Left of Orange Band -->
       <button class="hero-band-btn" aria-label="Scroll down to About section" data-magnetic>
@@ -255,20 +243,23 @@
         </svg>
       </button>
 
-      <!-- Cutout Portrait with Glitch Layers -->
+      <!-- Cutout Portrait with Glitch Layers and Single-Photo Masked Orange Tint Overlay -->
       <div class="hero-photo-wrapper" id="hero-portrait">
         <div class="glitch-wrapper">
           <img 
             src="assets/mubassir-new-cutout.webp" 
-            srcset="assets/mubassir-new-cutout-800.webp 800w, assets/mubassir-new-cutout.webp 1024w"
-            sizes="(max-width: 768px) 454px, 581px"
+            srcset="assets/mubassir-new-cutout-800.webp 600w, assets/mubassir-new-cutout.webp 1000w"
+            sizes="(max-width: 768px) 600px, 1000px"
             alt="Mubassir Shah — AI Engineer & SaaS Builder" 
             class="hero-photo-img" 
             loading="eager" 
             decoding="async"
-            width="581"
-            height="1024"
+            width="575"
+            height="957"
           >
+          <!-- Masked Orange Tint Overlay (Single photo, identical size, clipped to orange band) -->
+          <div class="hero-photo-orange-tint" aria-hidden="true"></div>
+
           <!-- Ink Glitch Slice -->
           <div class="glitch-slice glitch-slice--ink" aria-hidden="true"></div>
           <!-- Signal Orange Glitch Slice -->

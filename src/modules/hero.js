@@ -31,6 +31,72 @@ export function initHero() {
     });
   }
 
+  // Set mask images on tint overlay
+  const tint = document.querySelector('.hero-photo-orange-tint');
+  if (tint) {
+    const maskUrl = 'url("assets/mubassir-new-cutout.webp")';
+    tint.style.webkitMaskImage = maskUrl;
+    tint.style.maskImage = maskUrl;
+  }
+
+  // Function to sync orange tint clip-path with the orange band
+  function syncBandClip() {
+    const band = document.querySelector('.hero-orange-band');
+    const tintEl = document.querySelector('.hero-photo-orange-tint');
+    const photoWrapper = document.querySelector('.hero-photo-wrapper');
+    if (!band || !tintEl || !photoWrapper) return;
+
+    const bandRect = band.getBoundingClientRect();
+    const photoRect = photoWrapper.getBoundingClientRect();
+
+    if (photoRect.height === 0) return;
+
+    const clipTop = Math.max(0, bandRect.top - photoRect.top);
+    const clipBottom = Math.max(0, photoRect.bottom - bandRect.bottom);
+
+    tintEl.style.clipPath = `inset(${Math.round(clipTop)}px 0px ${Math.round(clipBottom)}px 0px)`;
+  }
+
+  // Function to ensure the period after Mubassir is always visible
+  // If it overlaps the orange band, render in ink (#0A0A0A); else signal orange (#FF4B2B)
+  function updateDotColor() {
+    const dot = document.querySelector('.hero-headline .dot');
+    const band = document.querySelector('.hero-orange-band');
+    if (!dot || !band) return;
+
+    const dotRect = dot.getBoundingClientRect();
+    const bandRect = band.getBoundingClientRect();
+
+    const overlaps = (
+      dotRect.bottom > bandRect.top &&
+      dotRect.top < bandRect.bottom &&
+      dotRect.right > bandRect.left &&
+      dotRect.left < bandRect.right
+    );
+
+    if (overlaps) {
+      dot.style.color = 'var(--color-ink)';
+    } else {
+      dot.style.color = 'var(--color-signal)';
+    }
+  }
+
+  // Run on mount and attach listeners
+  syncBandClip();
+  updateDotColor();
+
+  window.addEventListener('resize', () => {
+    syncBandClip();
+    updateDotColor();
+  }, { passive: true });
+
+  window.addEventListener('orientationchange', () => {
+    setTimeout(() => {
+      syncBandClip();
+      updateDotColor();
+    }, 100);
+  });
+
   // Hero Parallax on scroll
   if (!prefersReduced) {
     gsap.to('.hero-photo-wrapper', {
@@ -38,9 +104,13 @@ export function initHero() {
         trigger: '#hero',
         start: 'top top',
         end: 'bottom top',
-        scrub: true
+        scrub: true,
+        onUpdate: () => {
+          syncBandClip();
+          updateDotColor();
+        }
       },
-      y: 80,
+      y: 60,
       ease: 'none'
     });
 
@@ -49,18 +119,31 @@ export function initHero() {
         trigger: '#hero',
         start: 'top top',
         end: 'bottom top',
-        scrub: true
+        scrub: true,
+        onUpdate: () => {
+          syncBandClip();
+          updateDotColor();
+        }
       },
-      x: -40,
+      x: -30,
       ease: 'none'
     });
   }
 
   // Entrance timeline on portfolio ready
   window.addEventListener('portfolio:ready', () => {
+    syncBandClip();
+    updateDotColor();
+
     if (prefersReduced) return;
 
-    const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
+    const tl = gsap.timeline({
+      defaults: { ease: 'power4.out' },
+      onUpdate: () => {
+        syncBandClip();
+        updateDotColor();
+      }
+    });
 
     tl.from('.site-header', {
       y: -40,

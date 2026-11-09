@@ -2,11 +2,12 @@
 .hero-section {
   position: relative;
   min-height: 100vh;
+  min-height: 100svh;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: clamp(80px, 12vh, 120px) clamp(24px, 4.5vw, 64px) clamp(24px, 4vh, 48px);
+  padding: clamp(72px, 10vh, 110px) clamp(24px, 4.5vw, 64px) clamp(20px, 3vh, 40px);
   background-color: var(--color-paper);
   overflow: hidden;
   z-index: 10;
@@ -16,24 +17,23 @@
 .hero-orange-band {
   position: absolute;
   top: 48%;
-  left: 32%;
+  left: 28%;
   right: 0;
-  height: clamp(140px, 20vw, 240px);
+  height: clamp(140px, 18vw, 240px);
   background-color: var(--color-signal);
   transform: translateY(-50%);
   z-index: 5;
   overflow: hidden;
-  will-change: transform;
 }
 
-/* Cutout Photo Layers */
+/* Cutout Photo Wrapper (Single Photo Element) */
 .hero-photo-wrapper {
   position: absolute;
-  right: clamp(16px, 7vw, 120px);
+  right: clamp(24px, 6vw, 120px);
   bottom: 0;
-  height: clamp(440px, 80vh, 860px);
+  height: clamp(500px, 84vh, 880px);
   width: auto;
-  aspect-ratio: 581 / 1024;
+  aspect-ratio: 575 / 957;
   z-index: 15;
   pointer-events: auto;
   user-select: none;
@@ -44,40 +44,34 @@
   height: 100%;
   object-fit: contain;
   object-position: bottom center;
-  filter: grayscale(100%) contrast(120%) brightness(100%);
+  filter: grayscale(100%) contrast(125%) brightness(98%);
   display: block;
 }
 
-/* Orange Band Multiply Blend Layer */
-.hero-band-tint {
+/* Masked Orange Tint Overlay (One photo, identical size, clipped to orange band) */
+.hero-photo-orange-tint {
   position: absolute;
   inset: 0;
-  pointer-events: none;
-  z-index: 6;
-  overflow: hidden;
-}
-
-.hero-band-photo-clone {
-  position: absolute;
-  /* Syncs identically with hero-photo-wrapper */
-  right: clamp(16px, 7vw, 120px);
-  /* Calculate offset relative to band */
-  bottom: calc(-1 * (50vh - clamp(70px, 10vw, 120px)));
-  height: clamp(440px, 80vh, 860px);
-  width: auto;
-  aspect-ratio: 581 / 1024;
-  object-fit: contain;
-  object-position: bottom center;
-  filter: grayscale(100%) contrast(135%);
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-signal);
   mix-blend-mode: multiply;
-  opacity: 0.95;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: bottom center;
+  mask-position: bottom center;
+  pointer-events: none;
+  z-index: 10;
+  /* clip-path dynamically calculated in hero.js to match orange band */
 }
 
 /* Arrow Button at bottom-left of Orange Band */
 .hero-band-btn {
   position: absolute;
-  left: 32%;
-  top: calc(48% + clamp(70px, 10vw, 120px));
+  left: 28%;
+  top: calc(48% + clamp(70px, 9vw, 120px));
   width: clamp(40px, 3.5vw, 48px);
   height: clamp(40px, 3.5vw, 48px);
   background-color: var(--color-ink);
@@ -87,6 +81,7 @@
   justify-content: center;
   z-index: 25;
   cursor: pointer;
+  border: none;
   transition: transform 0.3s var(--ease-out-expo), background-color 0.2s ease;
 }
 
@@ -114,8 +109,8 @@
 .hero-micro-row {
   display: grid;
   grid-template-columns: repeat(2, minmax(200px, 340px));
-  gap: clamp(24px, 4vw, 56px);
-  margin-bottom: clamp(24px, 4vh, 48px);
+  gap: clamp(20px, 3.5vw, 48px);
+  margin-bottom: clamp(16px, 3vh, 36px);
   z-index: 20;
   position: relative;
 }
@@ -151,10 +146,11 @@
 
 .hero-headline {
   font-family: var(--font-headline);
-  font-size: clamp(3.75rem, 13.5vw, 11.5rem);
+  font-size: clamp(3.75rem, 12vw, 11rem);
   font-weight: 900;
   line-height: 0.88;
-  letter-spacing: -0.05em;
+  letter-spacing: -0.02em;
+  word-spacing: 0.1em;
   color: var(--color-ink);
   margin-bottom: clamp(16px, 2.5vh, 28px);
   user-select: none;
@@ -162,6 +158,7 @@
 
 .hero-headline .dot {
   color: var(--color-signal);
+  transition: color 0.2s ease;
 }
 
 /* Hero Tagline with 3D Rotating Word */
@@ -170,6 +167,7 @@
   font-size: clamp(1.25rem, 2.5vw, 2.125rem);
   font-weight: 700;
   letter-spacing: -0.02em;
+  word-spacing: 0.08em;
   color: var(--color-ink-90);
   display: flex;
   align-items: baseline;
@@ -186,12 +184,13 @@
   width: 100%;
   z-index: 20;
   position: relative;
+  padding-left: 16px;
 }
 
-/* Big Rotated 001 */
+/* Big Rotated 001 - fully visible with > 16px margin */
 .hero-index-001 {
   font-family: var(--font-numeral);
-  font-size: clamp(3.5rem, 7vw, 6rem);
+  font-size: clamp(3rem, 6vw, 5.5rem);
   line-height: 0.85;
   color: var(--color-ink);
   transform: rotate(-90deg);
@@ -199,13 +198,13 @@
   display: inline-block;
   user-select: none;
   letter-spacing: -0.04em;
-  margin-left: clamp(0px, 1vw, 12px);
+  margin-left: 24px;
 }
 
 /* Circular Rotating Badge */
 .hero-badge-wrapper {
   position: absolute;
-  left: clamp(240px, 24vw, 380px);
+  left: clamp(220px, 22vw, 360px);
   bottom: clamp(10px, 3vh, 32px);
   width: clamp(90px, 9vw, 115px);
   height: clamp(90px, 9vw, 115px);
@@ -259,67 +258,110 @@
   color: var(--color-ink);
 }
 
-/* Mobile responsive adjustments */
-@media (max-width: 900px) {
-  .hero-orange-band {
-    left: 15%;
-    top: 55%;
-    height: 180px;
-  }
-  
-  .hero-band-btn {
-    left: 15%;
-    top: calc(55% + 90px);
+/* Tablet & Mobile responsive adjustments (768px and below) */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 72px 16px 16px;
+    height: 100svh;
+    min-height: 100svh;
+    max-height: 100svh;
   }
 
-  .hero-photo-wrapper {
-    right: -20px;
-    height: 60vh;
-    opacity: 0.85;
+  .hero-micro-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .hero-micro-col {
+    padding-top: 6px;
+  }
+
+  .hero-micro-col .micro-title {
+    font-size: 0.6875rem;
+    margin-bottom: 2px;
+  }
+
+  .hero-micro-col .micro-desc {
+    font-size: 0.625rem;
   }
 
   .hero-content {
     max-width: 100%;
+    margin-bottom: 12px;
+  }
+
+  .hero-headline {
+    font-size: clamp(2.75rem, 13vw, 4.25rem);
+    line-height: 0.92;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+  }
+
+  .hero-tagline {
+    font-size: clamp(0.9375rem, 3.8vw, 1.125rem);
+    line-height: 1.25;
+  }
+
+  .hero-orange-band {
+    left: 0;
+    width: 100%;
+    top: auto;
+    bottom: 0;
+    height: 140px;
+    transform: none;
+    z-index: 5;
+  }
+
+  .hero-photo-wrapper {
+    right: 0;
+    bottom: 0;
+    height: 54svh;
+    max-height: 440px;
+    aspect-ratio: 575 / 957;
+    z-index: 15;
+  }
+
+  .hero-band-btn {
+    left: 16px;
+    top: auto;
+    bottom: 140px;
+    width: 44px;
+    height: 44px;
+    z-index: 25;
+  }
+
+  .hero-badge-wrapper {
+    left: 16px;
+    bottom: 16px;
+    right: auto;
+    width: 76px;
+    height: 76px;
+    z-index: 25;
   }
 
   .hero-vertical-meta {
     display: none;
   }
 
-  .hero-micro-row {
-    grid-template-columns: 1fr;
-    gap: 12px;
+  .hero-index-001 {
+    display: none; /* Hide 001 on mobile to prevent clutter */
+  }
+
+  .hero-bottom-row {
+    padding-left: 0;
   }
 }
 
-@media (max-width: 600px) {
-  .hero-orange-band {
-    left: 0;
-    width: 100%;
-    top: 60%;
-    height: 150px;
+@media (max-width: 400px) {
+  .hero-headline {
+    font-size: 2.75rem;
   }
-
-  .hero-band-btn {
-    left: 20px;
-    top: calc(60% + 75px);
+  .hero-micro-row {
+    gap: 8px;
   }
-
   .hero-photo-wrapper {
-    right: -40px;
-    height: 48vh;
-    bottom: 20px;
-  }
-
-  .hero-badge-wrapper {
-    left: auto;
-    right: 20px;
-    bottom: 16px;
-    width: 75px;
-    height: 75px;
-  }
-
-  .hero-index-001 {
-    font-size: 3rem;
+    height: 52svh;
+    max-height: 380px;
   }
 }

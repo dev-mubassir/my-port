@@ -19,6 +19,8 @@ Thumbs.db
 playwright-report/
 test-results/
 screenshots/
+ss/
+assets/real/unredacted/
 
 # Python virtual environment or temporary cache if any local tooling ran
 __pycache__/
