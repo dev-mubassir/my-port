@@ -10,7 +10,7 @@
   - Remove stray 1px line and ghost text in hero.
   - Mobile hero: one photo, aligned with band; face never covered by text; "Mubassir." scales without overflow; no gap > 24px; fits in 100svh (360x640 up to 412x915); arrow button and rotating badge never cover face; tagline readable.
 
-- [ ] F02: NAVBAR: BLACK ON 002, SEE-THROUGH, BROKEN ON MOBILE
+- [x] F02: NAVBAR: BLACK ON 002, SEE-THROUGH, BROKEN ON MOBILE
   - Top-level sections and footer carry data-nav-theme. 002 Siffty is light. Inner dark blocks must never change nav theme. Detect section under nav bottom edge with IntersectionObserver / ScrollTrigger, also on load and resize.
   - Nav background 100% opaque in current theme color on all screen sizes, with 1px low-opacity rule. Theme transition 0.25s.
   - Mobile (<=768px): height 56px + safe-area-inset-top. Left: "+MS". Right: small orange HIRE ME button (36px high) and 3-dot menu button (44x44 tap area). Text links hidden (in menu overlay). Zero horizontal overflow.

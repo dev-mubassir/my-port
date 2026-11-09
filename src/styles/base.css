@@ -5,6 +5,16 @@
   padding: 0;
 }
 
+:root {
+  --nav-height: 68px;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --nav-height: 56px;
+  }
+}
+
 html {
   font-size: 16px;
   background-color: var(--color-paper);
@@ -13,7 +23,12 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: auto; /* Managed by Lenis */
+  scroll-padding-top: var(--nav-height);
   overflow-x: hidden;
+}
+
+section, .section-header-row {
+  scroll-margin-top: var(--nav-height);
 }
 
 body {
