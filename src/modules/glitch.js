@@ -6,7 +6,7 @@ export function initGlitch() {
   if (prefersReduced) return;
 
   // Set mask images dynamically to match current image asset
-  const maskUrl = 'url("assets/mubassir-new-cutout.webp")';
+  const maskUrl = 'url("assets/photo-final-cutout.webp")';
   const inkSlice = container.querySelector('.glitch-slice--ink');
   const signalSlice = container.querySelector('.glitch-slice--signal');
   

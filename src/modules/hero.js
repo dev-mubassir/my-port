@@ -34,7 +34,7 @@ export function initHero() {
   // Set mask images on tint overlay
   const tint = document.querySelector('.hero-photo-orange-tint');
   if (tint) {
-    const maskUrl = 'url("assets/mubassir-new-cutout.webp")';
+    const maskUrl = 'url("assets/photo-final-cutout.webp")';
     tint.style.webkitMaskImage = maskUrl;
     tint.style.maskImage = maskUrl;
   }
@@ -99,21 +99,6 @@ export function initHero() {
 
   // Hero Parallax on scroll
   if (!prefersReduced) {
-    gsap.to('.hero-photo-wrapper', {
-      scrollTrigger: {
-        trigger: '#hero',
-        start: 'top top',
-        end: 'bottom top',
-        scrub: true,
-        onUpdate: () => {
-          syncBandClip();
-          updateDotColor();
-        }
-      },
-      y: 60,
-      ease: 'none'
-    });
-
     gsap.to('.hero-orange-band', {
       scrollTrigger: {
         trigger: '#hero',
@@ -174,8 +159,6 @@ export function initHero() {
     }, '-=0.7')
     .from('.hero-photo-wrapper', {
       opacity: 0,
-      scale: 0.95,
-      y: 30,
       duration: 0.9
     }, '-=0.6')
     .from(['.hero-index-001', '.hero-badge-wrapper', '.hero-vertical-meta', '.hero-band-btn'], {

@@ -29,14 +29,15 @@
 /* Cutout Photo Wrapper (Single Photo Element) */
 .hero-photo-wrapper {
   position: absolute;
-  right: clamp(24px, 6vw, 120px);
+  right: clamp(16px, 4.5vw, 64px);
   bottom: 0;
-  height: clamp(500px, 84vh, 880px);
+  height: clamp(480px, 78vh, 800px);
   width: auto;
-  aspect-ratio: 575 / 957;
+  aspect-ratio: 888 / 970;
   z-index: 15;
   pointer-events: auto;
   user-select: none;
+  transform-origin: bottom center;
 }
 
 .hero-photo-img {
@@ -146,7 +147,7 @@
 
 .hero-headline {
   font-family: var(--font-headline);
-  font-size: clamp(3.75rem, 12vw, 11rem);
+  font-size: clamp(3.5rem, 9vw, 9.5rem);
   font-weight: 900;
   line-height: 0.88;
   letter-spacing: -0.02em;
@@ -265,6 +266,7 @@
     height: 100svh;
     min-height: 100svh;
     max-height: 100svh;
+    justify-content: flex-start;
   }
 
   .hero-micro-row {
@@ -288,19 +290,20 @@
 
   .hero-content {
     max-width: 100%;
-    margin-bottom: 12px;
+    margin-top: 10px;
+    margin-bottom: auto;
   }
 
   .hero-headline {
-    font-size: clamp(2.75rem, 13vw, 4.25rem);
+    font-size: clamp(2.5rem, 11vw, 3.75rem);
     line-height: 0.92;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     letter-spacing: -0.02em;
   }
 
   .hero-tagline {
-    font-size: clamp(0.9375rem, 3.8vw, 1.125rem);
-    line-height: 1.25;
+    font-size: clamp(0.875rem, 3.5vw, 1.0625rem);
+    line-height: 1.2;
   }
 
   .hero-orange-band {
@@ -308,18 +311,19 @@
     width: 100%;
     top: auto;
     bottom: 0;
-    height: 140px;
+    height: 120px;
     transform: none;
     z-index: 5;
   }
 
   .hero-photo-wrapper {
-    right: 0;
+    right: 8px;
     bottom: 0;
-    height: 54svh;
-    max-height: 440px;
-    aspect-ratio: 575 / 957;
+    width: min(324px, 90vw);
+    height: auto;
+    aspect-ratio: 888 / 970;
     z-index: 15;
+    transform-origin: bottom center;
   }
 
   .hero-band-btn {
@@ -355,13 +359,17 @@
 
 @media (max-width: 400px) {
   .hero-headline {
-    font-size: 2.75rem;
+    font-size: 2.375rem;
   }
   .hero-micro-row {
     gap: 8px;
   }
   .hero-photo-wrapper {
-    height: 52svh;
-    max-height: 380px;
+    right: 4px;
+    bottom: 0;
+    width: min(312px, 92vw);
+    height: auto;
+    aspect-ratio: 888 / 970;
+    transform-origin: bottom center;
   }
 }
